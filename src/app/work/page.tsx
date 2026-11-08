@@ -16,7 +16,7 @@ export default function WorkPage() {
   const repos = new Set(projects.flatMap((p) => p.repos)).size;
   return (
     <>
-      <section className="grid-paper border-b hairline pt-36 pb-16 md:pt-44 md:pb-24">
+      <section className="grid-paper border-b hairline pt-28 pb-12 md:pt-44 md:pb-24">
         <div className="container-x grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
             <p className="t-label mb-6">Work · Index</p>

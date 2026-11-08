@@ -146,14 +146,15 @@ function Rig() {
   useFrame(({ pointer }) => {
     const p = heroState.progress;
     const portrait = size.width < size.height;
-    const dist = portrait ? 12.5 : 9.4;
+    const compact = size.width < 768; // framed phone/tablet stage: pull back so the opened stack stays whole
+    const dist = portrait ? 12.5 : compact ? 12 : 9.4;
     // Camera swings from a high isometric view to eye level, passing between the
     // separated layers, then settles low as the section hands over to the next.
     const swing = smooth(0.1, 0.7, p);
     const settle = smooth(0.7, 1, p);
     cam.set(
       5.2 - swing * 2.2 + pointer.x * 0.35,
-      3.6 - swing * 3.4 - settle * 0.8 + pointer.y * 0.25,
+      3.6 - swing * (compact ? 2.2 : 3.4) - settle * 0.8 + pointer.y * 0.25,
       dist - swing * 1.4 + settle * 0.6,
     );
     camera.position.lerp(cam, 0.08);

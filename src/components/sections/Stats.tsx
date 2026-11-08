@@ -9,7 +9,7 @@ export function Stats() {
 
 
   return (
-    <section aria-labelledby="stats-title" className="border-t hairline py-24 md:py-32">
+    <section aria-labelledby="stats-title" className="border-t hairline py-16 md:py-32">
       <Fx name="stats" />
       <div className="container-x">
         <SectionHeader index="03" label="Proof in numbers" title="Shipped, not sketched." />
@@ -23,12 +23,12 @@ export function Stats() {
                   <span data-count={s.value}>{s.value}</span>
                   <span className="text-accent">{s.suffix}</span>
                 </p>
-                <p className="mt-4 text-base font-medium">{s.label}<Status status={s.status} /></p>
-                {s.note && <p className="mt-1 text-sm text-muted">{s.note}</p>}
+                <p className="mt-4 text-base font-medium text-pretty">{s.label}<Status status={s.status} /></p>
+                {s.note && <p className="mt-1 text-base text-muted lg:text-sm">{s.note}</p>}
                 {s.evidence && (
                   s.evidence.href.startsWith("http")
-                    ? <a href={s.evidence.href} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block font-mono text-[11px] tracking-wider text-accent uppercase hover:underline">{s.evidence.label} ↗</a>
-                    : <Link href={s.evidence.href} className="mt-4 inline-block font-mono text-[11px] tracking-wider text-accent uppercase hover:underline">{s.evidence.label} →</Link>
+                    ? <a href={s.evidence.href} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-11 items-center font-mono text-[11px] tracking-wider text-accent uppercase hover:underline">{s.evidence.label} ↗</a>
+                    : <Link href={s.evidence.href} className="mt-2 inline-flex min-h-11 items-center font-mono text-[11px] tracking-wider text-accent uppercase hover:underline">{s.evidence.label} →</Link>
                 )}
               </dd>
             </div>

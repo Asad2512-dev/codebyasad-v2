@@ -50,7 +50,7 @@ export function Catalogue({ projects }: { projects: Project[] }) {
 
       <div data-empty hidden className="mt-6 rounded-[var(--radius-lg)] border border-dashed hairline p-12 text-center">
         <p className="font-display text-3xl">Nothing matches that yet.</p>
-        <p className="mt-2 text-sm text-muted">Try another technology or clear the filters.</p>
+        <p className="mt-2 text-base text-muted">Try another technology or clear the filters.</p>
       </div>
     </div>
   );

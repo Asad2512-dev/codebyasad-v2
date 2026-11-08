@@ -4,7 +4,7 @@ import type { EvidenceSource, Project } from "@/types/content";
 import { ModuleMap } from "./ModuleMap";
 import { ProjectMedia } from "./ProjectMedia";
 import { ArchitectureExplorer } from "./ArchitectureExplorer";
-import { ArchitectureDiagram } from "./ArchitectureDiagram";
+import { ArchitectureDiagram, ArchitectureStack } from "./ArchitectureDiagram";
 import { Status } from "@/components/ui/Status";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { Button } from "@/components/ui/Button";
@@ -12,7 +12,7 @@ import { ProjectCard } from "./ProjectCard";
 
 function Block({ n, title, children }: { n: string; title: string; children: React.ReactNode }) {
   return (
-    <section className="grid grid-cols-1 gap-6 border-t hairline py-14 md:grid-cols-12 md:py-20" aria-labelledby={`cs-${n}`}>
+    <section className="grid grid-cols-1 gap-4 border-t hairline py-12 md:grid-cols-12 md:gap-6 md:py-20" aria-labelledby={`cs-${n}`}>
       <div className="min-w-0 md:col-span-4">
         <h2 id={`cs-${n}`} className="t-label" data-reveal><span className="text-accent">{n}</span> — {title}</h2>
       </div>
@@ -22,7 +22,7 @@ function Block({ n, title, children }: { n: string; title: string; children: Rea
 }
 
 const List = ({ items }: { items: string[] }) => (
-  <ul className="space-y-3">{items.map((t) => <li key={t} className="flex gap-3 text-lg leading-relaxed"><span aria-hidden className="mt-3 h-px w-4 shrink-0 bg-accent" />{t}</li>)}</ul>
+  <ul className="space-y-3">{items.map((t) => <li key={t} className="flex gap-3 text-[1.0625rem] leading-relaxed md:text-lg"><span aria-hidden className="mt-3 h-px w-4 shrink-0 bg-accent" />{t}</li>)}</ul>
 );
 
 const sourceIcon = (k: EvidenceSource["kind"]) => (k === "live-site" ? Globe : k === "architecture-doc" ? FileText : k === "repository" ? Code2 : FileText);
@@ -37,15 +37,15 @@ export function CaseStudy({ project: p, next, related }: { project: Project; nex
   return (
     <article>
       {/* Hero */}
-      <header className="grid-paper border-b hairline pt-32 pb-16 md:pt-40 md:pb-24">
-        <div className="container-x grid items-end gap-12 lg:grid-cols-12">
+      <header className="grid-paper border-b hairline pt-24 pb-12 md:pt-40 md:pb-24">
+        <div className="container-x grid items-end gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-6">
             <p className="t-label flex flex-wrap items-center gap-3">
-              <Link href="/work/" className="hover:text-ink">Work</Link><span aria-hidden>/</span><span>{p.categories.slice(0, 3).join(" · ")}</span>
+              <Link href="/work/" className="-my-3 inline-flex min-h-11 min-w-11 items-center hover:text-ink">Work</Link><span aria-hidden>/</span><span>{p.categories.slice(0, 3).join(" · ")}</span>
               {p.status && <StatusBadge status={p.status} />}
             </p>
-            <h1 className="t-hero mt-6 break-words">{p.name}</h1>
-            <p className="mt-6 max-w-xl text-2xl leading-snug">{p.tagline}</p>
+            <h1 className="t-hero mt-5 text-balance break-words md:mt-6">{p.name}</h1>
+            <p className="mt-5 max-w-xl text-[1.35rem] leading-snug text-pretty md:mt-6 md:text-2xl">{p.tagline}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               {p.links.live && <Button href={p.links.live}>Visit live site</Button>}
               {p.links.repo && <Button href={p.links.repo} variant="secondary">Source on GitHub</Button>}
@@ -56,7 +56,7 @@ export function CaseStudy({ project: p, next, related }: { project: Project; nex
           </div>
         </div>
         <div className="container-x">
-          <dl className="mt-16 grid gap-6 border-t hairline pt-6 text-sm sm:grid-cols-2 lg:grid-cols-4">
+          <dl className="mt-12 grid grid-cols-2 gap-x-4 gap-y-5 border-t hairline pt-6 text-[15px] md:mt-16 md:gap-6 lg:text-sm lg:grid-cols-4">
             <div><dt className="t-label">Role</dt><dd className="mt-1">{p.role ?? "Engineer"}</dd></div>
             <div><dt className="t-label">Discipline</dt><dd className="mt-1">{p.categories.join(", ")}</dd></div>
             <div><dt className="t-label">Stack</dt><dd className="mt-1">{p.technologies.slice(0, 5).join(", ") || "Not documented"}</dd></div>
@@ -82,7 +82,8 @@ export function CaseStudy({ project: p, next, related }: { project: Project; nex
 
         {p.architecture && p.architecture.length > 0 && (
           <Block n={n()} title="System architecture">
-            <ArchitectureDiagram layers={p.architecture} />
+            <div className="hidden md:block"><ArchitectureDiagram layers={p.architecture} /></div>
+            <ArchitectureStack layers={p.architecture} />
             <div className="mt-12"><ArchitectureExplorer projects={[p]} compact /></div>
           </Block>
         )}
@@ -90,7 +91,7 @@ export function CaseStudy({ project: p, next, related }: { project: Project; nex
         {p.technologies.length > 0 && (
           <Block n={n()} title="Technology stack">
             <ul className="flex flex-wrap gap-2">{p.technologies.map((t) => <li key={t} className="rounded-full border hairline bg-surface px-3 py-1.5 font-mono text-xs">{t}</li>)}</ul>
-            <p className="mt-4 text-sm text-muted">Taken from the project&apos;s manifests and architecture documentation.</p>
+            <p className="mt-4 text-[15px] text-muted lg:text-sm">Taken from the project&apos;s manifests and architecture documentation.</p>
           </Block>
         )}
 
@@ -133,7 +134,7 @@ export function CaseStudy({ project: p, next, related }: { project: Project; nex
         {p.lessons && p.lessons.length > 0 && <Block n={n()} title="Lessons learned"><List items={p.lessons} /></Block>}
 
         <Block n={n()} title="Evidence">
-          <p className="text-sm text-muted">
+          <p className="text-[15px] text-muted lg:text-sm">
             {completenessText[p.evidence.completeness]} · reviewed {new Date(p.evidence.lastReviewed).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
             {p.evidence.verification === "reported" && " · based on the author's project description"}
           </p>
@@ -144,13 +145,13 @@ export function CaseStudy({ project: p, next, related }: { project: Project; nex
               return (
                 <li key={si}>
                   {s.href
-                    ? <a href={s.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 font-mono text-xs hover:text-accent">{inner}</a>
-                    : <span className="flex items-center gap-3 px-4 py-3 font-mono text-xs text-muted">{inner}</span>}
+                    ? <a href={s.href} target="_blank" rel="noopener noreferrer" className="flex min-h-12 items-center gap-3 px-4 py-3 font-mono text-xs hover:text-accent active:bg-paper">{inner}</a>
+                    : <span className="flex min-h-12 items-center gap-3 px-4 py-3 font-mono text-xs text-muted">{inner}</span>}
                 </li>
               );
             })}
           </ul>
-          {p.evidence.sources.some((s) => !s.href) && <p className="mt-3 text-xs text-muted">Private repositories are available to review on request.</p>}
+          {p.evidence.sources.some((s) => !s.href) && <p className="mt-3 text-[15px] text-muted lg:text-xs">Private repositories are available to review on request.</p>}
         </Block>
 
         {related.length > 0 && (

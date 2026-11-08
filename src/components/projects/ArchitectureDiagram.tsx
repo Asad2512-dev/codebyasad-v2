@@ -32,3 +32,31 @@ export function ArchitectureDiagram({ layers }: { layers: ArchitectureLayer[] })
     </figure>
   );
 }
+
+/** Phone version: the same flow as readable HTML — no scaled-down SVG text. */
+export function ArchitectureStack({ layers }: { layers: ArchitectureLayer[] }) {
+  return (
+    <ol className="md:hidden" aria-label="Architecture flow, top to bottom">
+      {layers.map((l, i) => {
+        const pending = l.status === "pending" || l.state === "planned";
+        return (
+          <li key={l.id} className="relative">
+            <div className={`rounded-[var(--radius-md)] border p-4 ${i === 1 ? "border-accent/40 bg-accent-soft/50" : "hairline bg-surface"} ${pending ? "border-dashed" : ""}`}>
+              <p className="flex items-center justify-between gap-3 font-mono text-[11px] tracking-wider text-accent uppercase">
+                <span>{String(i + 1).padStart(2, "0")} · {l.id}</span>
+                {l.state && l.state !== "implemented" && <span className="text-amber-800">{l.state}</span>}
+              </p>
+              <p className="mt-1 text-lg font-medium">{l.name}</p>
+              {l.items.length > 0 && (
+                <ul className="mt-2 space-y-1 text-[15px] leading-snug text-muted">
+                  {l.items.map((it) => <li key={it} className="flex gap-2"><span aria-hidden className="mt-2 size-1 shrink-0 rounded-full bg-accent" />{it}</li>)}
+                </ul>
+              )}
+            </div>
+            {i < layers.length - 1 && <span aria-hidden className="mx-auto flex h-6 w-px items-end justify-center bg-accent/60"><span className="-mb-1 block size-0 border-x-4 border-t-[6px] border-x-transparent border-t-accent" /></span>}
+          </li>
+        );
+      })}
+    </ol>
+  );
+}

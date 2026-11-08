@@ -6,7 +6,7 @@ export function Systems() {
   // Flagships first (already ordered), then any other project with documented architecture.
   const ordered = projects.filter((p) => p.architecture?.length);
   return (
-    <section aria-labelledby="systems-title" className="border-t hairline py-24 md:py-36">
+    <section aria-labelledby="systems-title" className="border-t hairline py-16 md:py-36">
       <div className="container-x">
         <SectionHeader index="05" label="The systems behind the products" title="Built beyond the interface."
           lead="Select a project and a layer. Every component listed was observed in the codebase; each layer says where, and whether it is implemented or planned." />

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 export function OpenSource() {
   const research = lab.filter((l) => l.kind === "Research");
   return (
-    <section aria-labelledby="oss-title" className="border-t hairline py-24 md:py-36">
+    <section aria-labelledby="oss-title" className="border-t hairline py-16 md:py-36">
       <div className="container-x">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <SectionHeader index="09" label="GitHub & research" title="Work in the open." />
@@ -35,7 +35,7 @@ export function OpenSource() {
             {research.map((r) => (
               <article key={r.title} className="rounded-[var(--radius-lg)] border hairline bg-surface p-6" data-reveal>
                 <h4 className="font-display text-2xl">{r.title}</h4>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{r.summary}</p>
+                <p className="mt-2 text-base leading-relaxed text-muted lg:text-sm">{r.summary}</p>
                 <p className="mt-4 font-mono text-[11px] text-muted">{r.stack.join(" · ")}</p>
               </article>
             ))}

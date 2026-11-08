@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.svg" },
 };
 
-export const viewport: Viewport = { themeColor: colors.paper, width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: colors.paper, width: "device-width", initialScale: 1, viewportFit: "cover" };
 
 const personLd = {
   "@context": "https://schema.org",

@@ -8,7 +8,7 @@ export function Contact({ as: Tag = "h2" }: { as?: "h1" | "h2" }) {
 
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="relative overflow-hidden border-t hairline bg-surface py-28 md:py-44">
+    <section id="contact" aria-labelledby="contact-title" className="relative overflow-hidden border-t hairline bg-surface py-20 md:py-44">
       <Fx name="contact" />
       <svg data-orbit aria-hidden viewBox="0 0 600 600" className="pointer-events-none absolute -right-40 -bottom-40 w-[620px] text-line md:-right-24">
         {[290, 230, 170, 110].map((r) => <circle key={r} cx="300" cy="300" r={r} fill="none" stroke="currentColor" />)}
@@ -23,7 +23,7 @@ export function Contact({ as: Tag = "h2" }: { as?: "h1" | "h2" }) {
         </Tag>
         <p className="t-lead mt-8 max-w-xl" data-reveal>{profile.contact.text}</p>
 
-        <a href={`mailto:${profile.email}`} className="group mt-12 inline-flex max-w-full items-center gap-3 border-b-2 border-ink pb-2 text-[clamp(1.1rem,3.2vw,2.5rem)] break-all transition-colors hover:border-accent hover:text-accent" data-reveal>
+        <a href={`mailto:${profile.email}`} className="group mt-12 inline-flex min-h-12 max-w-full items-center gap-3 border-b-2 border-ink py-2 text-[clamp(1.1rem,3.2vw,2.5rem)] break-all transition-colors hover:border-accent hover:text-accent" data-reveal>
           <Mail className="size-[0.8em] shrink-0" aria-hidden />{profile.email}
           <ArrowUpRight aria-hidden className="size-[0.8em] shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
         </a>

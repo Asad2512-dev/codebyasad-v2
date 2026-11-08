@@ -9,22 +9,22 @@ export function Footer() {
       <div className="container-x grid gap-10 py-14 md:grid-cols-[2fr_1fr_1fr]">
         <div>
           <p className="font-display text-3xl">{profile.name}</p>
-          <p className="mt-2 max-w-sm text-sm text-muted">{profile.role} · {profile.location}</p>
+          <p className="mt-2 max-w-sm text-base text-muted lg:text-sm">{profile.role} · {profile.location}</p>
         </div>
         <nav aria-label="Footer">
           <p className="t-label mb-4">Index</p>
-          <ul className="space-y-2 text-sm">
-            {[...primaryNav, ...ctaNav].map((n) => <li key={n.href}><Link className="text-muted hover:text-ink" href={n.href}>{n.label}</Link></li>)}
+          <ul className="grid grid-cols-2 text-base lg:block lg:text-sm">
+            {[...primaryNav, ...ctaNav].map((n) => <li key={n.href}><Link className="inline-flex min-h-11 min-w-11 items-center text-muted hover:text-ink lg:min-h-9" href={n.href}>{n.label}</Link></li>)}
           </ul>
         </nav>
         <div>
           <p className="t-label mb-4">Elsewhere</p>
-          <ul className="space-y-2 text-sm">
-            {profile.socials.map((s) => <li key={s.label}><a className="text-muted hover:text-ink" href={s.href}>{s.label}</a></li>)}
+          <ul className="text-base lg:text-sm">
+            {profile.socials.map((s) => <li key={s.label}><a className="inline-flex min-h-11 min-w-11 items-center text-muted hover:text-ink lg:min-h-9" href={s.href}>{s.label}</a></li>)}
           </ul>
         </div>
       </div>
-      <div className="container-x flex flex-col justify-between gap-2 border-t hairline py-6 font-mono text-[11px] text-muted sm:flex-row">
+      <div className="container-x flex flex-col justify-between gap-2 border-t hairline py-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] font-mono text-[11px] text-muted sm:flex-row">
         <span>© {new Date().getFullYear()} {site.name}</span>
         <span>Designed &amp; engineered by Asad · Next.js, GSAP, Three.js</span>
       </div>

@@ -12,10 +12,10 @@ export default function About() {
   return (
     <>
       <PageHero label="About" title="I design the experience. I engineer the product." />
-      <section className="py-20 md:py-28">
+      <section className="py-16 md:py-28">
         <div className="container-x grid gap-12 lg:grid-cols-12">
           <aside className="lg:col-span-4">
-            <dl className="space-y-5 border-t hairline pt-6 text-sm" data-reveal>
+            <dl className="space-y-5 border-t hairline pt-6 text-base lg:text-sm" data-reveal>
               <div><dt className="t-label">Based in</dt><dd className="mt-1">{profile.location} · {profile.timezone}</dd></div>
               <div><dt className="t-label">Focus</dt><dd className="mt-1">{profile.role}</dd></div>
               <div><dt className="t-label">Education</dt><dd className="mt-1">BS Computer Science, NUML (2022–2026)</dd></div>

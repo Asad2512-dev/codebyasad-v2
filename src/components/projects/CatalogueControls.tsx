@@ -18,12 +18,14 @@ export function CatalogueControls() {
   const [tech, setTech] = useState<string | null>(null);
   const [view, setView] = useState<View>("grid");
   const [allTech, setAllTech] = useState(false);
+  const [placeholder, setPlaceholder] = useState("Search projects, stacks, architecture");
   const deferredQ = useDeferredValue(q);
   const ref = useRef<HTMLDivElement>(null);
   const first = useRef(true);
 
   // Restore shareable filters from the URL once.
   useEffect(() => {
+    if (window.matchMedia("(min-width: 768px)").matches) setPlaceholder("Search by name, technology or architecture — e.g. “Laravel Stripe”");
     const u = new URLSearchParams(window.location.search);
     const c = (u.get("category") ?? "All") as ProjectCategory | "All";
     if (u.get("q")) setQ(u.get("q")!);
@@ -89,44 +91,44 @@ export function CatalogueControls() {
 
   return (
     <div ref={ref}>
-      <div className="sticky top-16 z-20 -mx-[clamp(1rem,4vw,3.5rem)] border-y hairline bg-paper/90 px-[clamp(1rem,4vw,3.5rem)] py-4 backdrop-blur-md md:top-20">
+      <div className="-mx-[max(clamp(1.25rem,4vw,3.5rem),env(safe-area-inset-left))] border-y hairline bg-paper/90 px-[max(clamp(1.25rem,4vw,3.5rem),env(safe-area-inset-left))] py-4 backdrop-blur-md md:sticky md:top-20 md:z-20">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
           <label className="relative block flex-1">
             <span className="sr-only">Search projects</span>
             <Search aria-hidden className="pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-muted" />
-            <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search by name, technology or architecture — e.g. “Laravel Stripe”"
-              className="h-11 w-full rounded-full border hairline bg-surface pr-10 pl-11 text-sm outline-none placeholder:text-muted/80 focus:border-accent" />
-            {q && <button type="button" onClick={() => setQ("")} aria-label="Clear search" className="absolute top-1/2 right-2 grid size-8 -translate-y-1/2 place-items-center rounded-full hover:bg-paper"><X className="size-4" /></button>}
+            <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder={placeholder}
+              className="h-12 w-full rounded-full border hairline bg-surface pr-12 pl-11 text-base outline-none placeholder:text-muted/80 focus:border-accent lg:h-11 lg:text-sm" />
+            {q && <button type="button" onClick={() => setQ("")} aria-label="Clear search" className="absolute top-1/2 right-1 grid size-11 -translate-y-1/2 place-items-center rounded-full hover:bg-paper"><X className="size-4" /></button>}
           </label>
-          <div role="radiogroup" aria-label="Display mode" className="flex shrink-0 self-start lg:self-auto rounded-full border hairline bg-surface p-1">
+          <div role="radiogroup" aria-label="Display mode" className="flex shrink-0 max-lg:w-full rounded-full border hairline bg-surface p-1">
             {([["grid", "Editorial grid", "Grid", LayoutGrid], ["index", "Technical index", "Index", List]] as const).map(([v, label, short, Icon]) => (
               <button key={v} type="button" role="radio" aria-checked={view === v} aria-label={label} onClick={() => setView(v)}
-                className={cn("inline-flex h-9 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full px-4 text-sm transition-colors", view === v ? "bg-ink text-paper" : "text-muted hover:text-ink")}>
+                className={cn("inline-flex h-11 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full px-4 text-sm transition-colors lg:h-9", view === v ? "bg-ink text-paper" : "text-muted hover:text-ink")}>
                 <Icon className="size-4 shrink-0" aria-hidden /><span className="hidden sm:inline">{label}</span><span className="sm:hidden" aria-hidden>{short}</span>
               </button>
             ))}
           </div>
         </div>
-        <div role="group" aria-label="Filter by category" className="-mx-1 mt-3 flex gap-2 overflow-x-auto px-1 pb-1">
+        <div role="group" aria-label="Filter by category" className="edge-fade no-scrollbar -mx-[max(clamp(1.25rem,4vw,3.5rem),env(safe-area-inset-left))] mt-3 flex gap-2 overflow-x-auto px-[max(clamp(1.25rem,4vw,3.5rem),env(safe-area-inset-left))] pb-1 md:mx-0 md:px-1">
           {(["All", ...categories] as const).map((c) => (
             <button key={c} type="button" aria-pressed={category === c} onClick={() => setCategory(c)}
-              className={cn("h-9 shrink-0 rounded-full border px-3.5 text-sm transition-colors", category === c ? "border-ink bg-ink text-paper" : "hairline bg-surface text-muted hover:text-ink")}>
+              className={cn("h-11 shrink-0 rounded-full border px-4 text-sm transition-colors active:scale-[.97] lg:h-9 lg:px-3.5", category === c ? "border-ink bg-ink text-paper" : "hairline bg-surface text-muted hover:text-ink")}>
               {c === "All" ? "All projects" : c} <span className="ml-1 font-mono text-[10px]">{c === "All" ? catalogue.length : counts[c]}</span>
             </button>
           ))}
         </div>
       </div>
 
-      <div className="mt-6 flex flex-wrap items-center gap-2" role="group" aria-label="Filter by technology">
-        <span className="t-label mr-1">Stack</span>
+      <div className="edge-fade no-scrollbar -mx-[max(clamp(1.25rem,4vw,3.5rem),env(safe-area-inset-left))] mt-5 flex items-center gap-2 overflow-x-auto px-[max(clamp(1.25rem,4vw,3.5rem),env(safe-area-inset-left))] pb-1 md:mx-0 md:flex-wrap md:overflow-visible md:px-0" role="group" aria-label="Filter by technology">
+        <span className="t-label mr-1 shrink-0">Stack</span>
         {techs.map((t) => (
           <button key={t} type="button" aria-pressed={tech === t} onClick={() => setTech(tech === t ? null : t)}
-            className={cn("h-8 rounded-full border px-3 font-mono text-[11px] transition-colors", tech === t ? "border-accent bg-accent-soft text-ink" : "hairline text-muted hover:border-ink/30 hover:text-ink")}>
+            className={cn("h-11 shrink-0 rounded-full border px-3.5 font-mono text-xs transition-colors active:scale-[.97] lg:h-8 lg:px-3 lg:text-[11px]", tech === t ? "border-accent bg-accent-soft text-ink" : "hairline text-muted hover:border-ink/30 hover:text-ink")}>
             {t}
           </button>
         ))}
         {technologyFilters.length > TECH_VISIBLE && (
-          <button type="button" onClick={() => setAllTech((v) => !v)} aria-expanded={allTech} className="h-8 px-2 text-sm text-accent hover:underline">
+          <button type="button" onClick={() => setAllTech((v) => !v)} aria-expanded={allTech} className="h-11 shrink-0 px-2 text-sm text-accent hover:underline lg:h-8">
             {allTech ? "Fewer" : `+${technologyFilters.length - TECH_VISIBLE} more`}
           </button>
         )}
@@ -134,7 +136,7 @@ export function CatalogueControls() {
 
       <div className="mt-8 flex items-baseline justify-between gap-4">
         <p className="text-sm text-muted" aria-live="polite"><span className="font-medium text-ink">{shown}</span> of {catalogue.length} projects{filtered ? " match" : ""}</p>
-        {filtered && <button type="button" onClick={reset} className="text-sm text-accent hover:underline">Clear filters</button>}
+        {filtered && <button type="button" onClick={reset} className="-my-3 inline-flex min-h-11 items-center px-2 text-sm text-accent hover:underline">Clear filters</button>}
       </div>
     </div>
   );

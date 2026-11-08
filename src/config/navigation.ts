@@ -10,3 +10,6 @@ export const ctaNav = [
   { label: "Resume", href: "/resume/" },
   { label: "Contact", href: "/contact/" },
 ] as const;
+
+/** Full mobile menu order. */
+export const mobileNav = [{ label: "Home", href: "/" }, ...primaryNav] as const;

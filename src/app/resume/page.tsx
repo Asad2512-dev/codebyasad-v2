@@ -32,10 +32,10 @@ export default function ResumePage() {
             <p className="mt-2 text-lg">{profile.role} · {profile.currentCompany}</p>
             <p className="mt-4 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs text-muted">
               <span>{profile.location}</span>
-              <a href={`mailto:${profile.email}`} className="hover:text-accent">{profile.email}</a>
-              <a href="https://codebyasad.com" className="hover:text-accent">codebyasad.com</a>
-              <a href="https://github.com/Asad2512-dev" className="hover:text-accent">github.com/Asad2512-dev</a>
-              <a href="https://linkedin.com/in/asadullah2512" className="hover:text-accent">linkedin.com/in/asadullah2512</a>
+              <a href={`mailto:${profile.email}`} className="-my-3 inline-flex min-h-11 items-center hover:text-accent print:my-0 print:min-h-0">{profile.email}</a>
+              <a href="https://codebyasad.com" className="-my-3 inline-flex min-h-11 items-center hover:text-accent print:my-0 print:min-h-0">codebyasad.com</a>
+              <a href="https://github.com/Asad2512-dev" className="-my-3 inline-flex min-h-11 items-center hover:text-accent print:my-0 print:min-h-0">github.com/Asad2512-dev</a>
+              <a href="https://linkedin.com/in/asadullah2512" className="-my-3 inline-flex min-h-11 items-center hover:text-accent print:my-0 print:min-h-0">linkedin.com/in/asadullah2512</a>
             </p>
           </header>
 
@@ -53,7 +53,7 @@ export default function ResumePage() {
                     <h3 className="font-medium">{r.title} — {r.org}</h3>
                     <p className="font-mono text-xs text-muted">{formatPeriod(r)} · {r.location}{r.workMode ? ` · ${r.workMode}` : ""}</p>
                   </div>
-                  <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted">
+                  <ul className="mt-2 list-disc space-y-1 pl-5 text-base leading-relaxed text-muted lg:text-sm print:text-sm">
                     {r.points.map((p) => <li key={p}>{p}</li>)}
                     {r.disciplines?.map((d) => <li key={d.title}><span className="text-ink">{d.title}:</span> {d.items.join(", ")}</li>)}
                     {r.reported?.map((p) => <li key={p}>{p}</li>)}
@@ -65,7 +65,7 @@ export default function ResumePage() {
 
           <section className="border-b hairline py-8" aria-labelledby="r-proj">
             <h2 id="r-proj" className="t-label mb-5">Selected projects</h2>
-            <ul className="space-y-3 text-sm">
+            <ul className="space-y-3 text-base lg:text-sm print:text-sm">
               {projects.map((p) => (
                 <li key={p.slug} className="break-inside-avoid"><span className="font-medium">{p.name}</span> — <span className="text-muted">{p.tagline}{p.technologies.length ? ` (${p.technologies.slice(0, 5).join(", ")})` : ""}</span></li>
               ))}
@@ -74,7 +74,7 @@ export default function ResumePage() {
 
           <section className="border-b hairline py-8" aria-labelledby="r-skills">
             <h2 id="r-skills" className="t-label mb-5">Skills</h2>
-            <dl className="grid gap-3 text-sm sm:grid-cols-[180px_1fr]">
+            <dl className="grid gap-3 text-base sm:grid-cols-[180px_1fr] lg:text-sm print:text-sm">
               {skillGroups.map((g) => (
                 <div key={g.id} className="contents"><dt className="font-medium">{g.title}</dt><dd className="text-muted">{g.skills.join(", ")}</dd></div>
               ))}
@@ -83,8 +83,8 @@ export default function ResumePage() {
 
           <section className="py-8" aria-labelledby="r-edu">
             <h2 id="r-edu" className="t-label mb-5">Education & awards</h2>
-            <p className="text-sm"><span className="font-medium">BS Computer Science</span> — National University of Modern Languages (NUML), Multan · 2022–2026</p>
-            <p className="mt-2 text-sm"><span className="font-medium">First Place</span> — MNS University Library App Development Competition · 2025</p>
+            <p className="text-base lg:text-sm print:text-sm"><span className="font-medium">BS Computer Science</span> — National University of Modern Languages (NUML), Multan · 2022–2026</p>
+            <p className="mt-2 text-base lg:text-sm print:text-sm"><span className="font-medium">First Place</span> — MNS University Library App Development Competition · 2025</p>
           </section>
         </article>
       </div>

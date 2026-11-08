@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Short landscape phones (e.g. 844×390) */
+@custom-variant shortp (@media (max-height: 700px) and (orientation: portrait) and (max-width: 1023px));
+@custom-variant short (@media (max-height: 520px) and (orientation: landscape) and (max-width: 1023px));
+
 @theme inline {
   --color-paper: var(--paper);
   --color-surface: var(--surface);
@@ -47,13 +51,18 @@ html { overflow-x: clip;
 /* Fluid type scale */
 .t-hero { font-family: var(--font-display); font-size: clamp(2.9rem, 9vw, 9.5rem); line-height: .92; letter-spacing: -0.025em; }
 /* Four-line hero (design / engineering statement) */
-.t-hero--split { font-size: clamp(2.6rem, 7.2vw, 7.25rem); }
+.t-hero--split { font-size: clamp(2.75rem, 11.2vw, 7.25rem); }
+@media (min-width: 640px) { .t-hero--split { font-size: clamp(3.5rem, 8vw, 7.25rem); } }
+@media (max-height: 520px) and (orientation: landscape) and (max-width: 1023px) { .t-hero--split { font-size: clamp(1.8rem, 8.4vh, 3rem); } }
+/* Scroll cue: a light travelling down a hairline */
+.scroll-cue::after { content: ""; position: absolute; inset: 0; background: var(--accent); transform: translateY(-100%); animation: cue 1.8s cubic-bezier(.65,0,.35,1) infinite 1.2s; }
+@keyframes cue { 0% { transform: translateY(-100%); } 60%, 100% { transform: translateY(100%); } }
 .t-display { font-family: var(--font-display); font-size: clamp(2.4rem, 6vw, 5.75rem); line-height: .98; letter-spacing: -0.02em; }
 .t-title { font-family: var(--font-display); font-size: clamp(1.9rem, 3.6vw, 3.25rem); line-height: 1.04; letter-spacing: -0.015em; }
 .t-lead { font-size: clamp(1.05rem, 1.35vw, 1.3rem); line-height: 1.55; color: var(--muted); }
 .t-label { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 
-.container-x { width: 100%; max-width: 1440px; margin-inline: auto; padding-inline: clamp(1rem, 4vw, 3.5rem); }
+.container-x { width: 100%; max-width: 1440px; margin-inline: auto; padding-inline: max(clamp(1.25rem, 4vw, 3.5rem), env(safe-area-inset-left), env(safe-area-inset-right)); }
 .hairline { border-color: var(--line); }
 
 /* Architectural grid paper behind sections */
@@ -82,7 +91,7 @@ html { overflow-x: clip;
   [data-reveal][data-pending] { opacity: 1; transform: none; }
 }
 
-.skip-link { position: absolute; left: 1rem; top: -100px; z-index: 100; background: var(--ink); color: var(--paper); padding: .6rem 1rem; border-radius: 8px; }
+.skip-link { position: absolute; left: 1rem; top: -100px; z-index: 100; background: var(--ink); color: var(--paper); padding: .8rem 1.1rem; border-radius: 8px; }
 .skip-link:focus { top: 1rem; }
 
 @media print {
@@ -92,7 +101,17 @@ html { overflow-x: clip;
 }
 
 /* Reduced motion: hero is not pinned and takes its natural height */
+@media (prefers-reduced-motion: reduce) { .scroll-cue::after { animation: none; transform: none; } }
 @media (prefers-reduced-motion: reduce) {
   [data-hero-root] { height: auto !important; }
   [data-hero-root] > div { position: relative !important; }
 }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+/* Tap feedback without the grey iOS flash */
+a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+html { scroll-padding-top: 5rem; }
+
+/* Horizontal scrollers on touch: fade the trailing edge to signal more content */
+@media (max-width: 767px) { .edge-fade { mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent); } }

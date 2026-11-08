@@ -14,7 +14,7 @@ export function Button({
   href, children, variant = "primary", className, icon = true, download,
 }: { href: string; children: React.ReactNode; variant?: Variant; className?: string; icon?: boolean; download?: boolean }) {
   const cls = cn(
-    "group inline-flex min-h-11 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-300",
+    "group inline-flex min-h-11 items-center gap-2 whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-medium transition-[background-color,border-color,color,transform] duration-300 active:scale-[.97]",
     styles[variant],
     className,
   );

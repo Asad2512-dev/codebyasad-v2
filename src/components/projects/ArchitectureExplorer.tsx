@@ -75,7 +75,7 @@ export function ArchitectureExplorer({ projects, compact = false }: { projects: 
         </div>
 
         <div id={`${id}-panel`} role="tabpanel" aria-labelledby={`${id}-t${li}`} ref={panel}
-          className="grid-paper rounded-[var(--radius-lg)] border hairline bg-surface p-6 sm:p-10 lg:col-span-7">
+          className="grid-paper scroll-mt-24 rounded-[var(--radius-lg)] border hairline bg-surface p-5 sm:p-10 lg:col-span-7">
           <p className="t-label">{project.name} · Layer {li + 1} of {layers.length}</p>
           <h3 className="t-title mt-3 flex flex-wrap items-center gap-3">
             {layer.name}
@@ -86,11 +86,11 @@ export function ArchitectureExplorer({ projects, compact = false }: { projects: 
               </span>
             )}
           </h3>
-          <p className="mt-4 max-w-xl leading-relaxed text-muted">{layer.note}</p>
+          <p className="mt-4 max-w-xl text-[1.0625rem] leading-relaxed text-muted md:text-base">{layer.note}</p>
           {layer.items.length > 0 && (
             <ul className="mt-8 grid gap-2 sm:grid-cols-2">
               {layer.items.map((it) => (
-                <li key={it} className="flex items-start gap-3 rounded-[var(--radius-sm)] border hairline bg-paper px-3 py-2.5 font-mono text-xs leading-relaxed">
+                <li key={it} className="flex items-start gap-3 rounded-[var(--radius-sm)] border hairline bg-paper px-3 py-2.5 font-mono text-[13px] leading-relaxed md:text-xs">
                   <span aria-hidden className="mt-1.5 size-1.5 shrink-0 rounded-full bg-accent" />{it}
                 </li>
               ))}

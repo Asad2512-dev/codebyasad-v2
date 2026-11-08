@@ -13,7 +13,7 @@ export function Timeline({ showHeader = true, detailed = false }: { showHeader?:
   const Item = showHeader ? "h4" : "h3";
 
   return (
-    <section aria-labelledby="timeline-title" className="border-t hairline py-24 md:py-36">
+    <section aria-labelledby="timeline-title" className="border-t hairline py-16 md:py-36">
       <Fx name="timeline" />
       <div className="container-x">
         {showHeader && <SectionHeader index="07" label="Experience" title="Designing and engineering products — now at Buildexa." />}
@@ -32,24 +32,24 @@ export function Timeline({ showHeader = true, detailed = false }: { showHeader?:
                 <Item className="mt-1 text-xl font-medium md:mt-0">{r.title}{r.current && <span className="ml-3 inline-flex translate-y-[-2px] items-center gap-1.5 rounded-full border border-emerald-600/25 bg-emerald-50 px-2 py-0.5 align-middle font-mono text-[10px] tracking-wider text-emerald-800 uppercase"><span aria-hidden className="size-1.5 rounded-full bg-emerald-600" />Current</span>}</Item>
                 <p className="text-muted">{r.org} · {r.location}{r.workMode ? ` · ${r.workMode}` : ""}</p>
                 {(detailed ? r.points.length > 0 : false) ? (
-                  <ul className="mt-4 max-w-2xl list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-muted marker:text-accent">
+                  <ul className="mt-4 max-w-2xl list-disc space-y-1.5 pl-5 text-base leading-relaxed text-muted marker:text-accent lg:text-sm">
                     {r.points.map((pt) => <li key={pt}>{pt}</li>)}
                   </ul>
                 ) : (
-                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">{r.summary}</p>
+                  <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted lg:text-sm">{r.summary}</p>
                 )}
                 {r.disciplines && (
                   <div className={detailed ? "mt-5 grid max-w-3xl gap-4 sm:grid-cols-2" : "mt-4 flex flex-wrap gap-2"}>
                     {r.disciplines.map((d) => detailed ? (
                       <div key={d.title} className="rounded-[var(--radius-md)] border hairline bg-surface p-4">
                         <p className="t-label mb-2">{d.title}</p>
-                        <ul className="space-y-1 text-sm text-muted">{d.items.map((x) => <li key={x}>{x}</li>)}</ul>
+                        <ul className="space-y-1 text-base text-muted lg:text-sm">{d.items.map((x) => <li key={x}>{x}</li>)}</ul>
                       </div>
                     ) : <span key={d.title} className="rounded-full border hairline bg-surface px-3 py-1 font-mono text-[11px]">{d.title}</span>)}
                   </div>
                 )}
                 {detailed && r.projects && r.projects.length > 0 && (
-                  <p className="mt-4 text-sm text-muted">Related: {r.projects.map((slug, k) => <span key={slug}>{k > 0 && ", "}<Link className="text-ink underline underline-offset-4 hover:text-accent" href={`/work/${slug}/`}>{getProject(slug)?.name ?? slug}</Link></span>)}</p>
+                  <p className="mt-4 text-base text-muted lg:text-sm">Related: {r.projects.map((slug, k) => <span key={slug}>{k > 0 && ", "}<Link className="text-ink underline underline-offset-4 hover:text-accent" href={`/work/${slug}/`}>{getProject(slug)?.name ?? slug}</Link></span>)}</p>
                 )}
                 {detailed && r.reported && (
                   <ul className="mt-4 flex flex-wrap gap-2">
@@ -71,7 +71,7 @@ export function Timeline({ showHeader = true, detailed = false }: { showHeader?:
                   <div>
                     <p className="font-mono text-xs text-muted">{formatPeriod(r)}</p>
                     <p className="mt-1 text-lg font-medium">{r.title}</p>
-                    <p className="text-sm text-muted">{r.org} · {r.location}</p>
+                    <p className="text-base text-muted lg:text-sm">{r.org} · {r.location}</p>
                   </div>
                 </li>
               ))}

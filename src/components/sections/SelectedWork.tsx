@@ -9,7 +9,7 @@ export function SelectedWork() {
 
 
   return (
-    <section id="work" aria-labelledby="work-title" className="border-t hairline bg-surface py-24 md:py-36">
+    <section id="work" aria-labelledby="work-title" className="border-t hairline bg-surface py-16 md:py-36">
       <Fx name="work" />
       <div className="container-x">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
@@ -19,7 +19,7 @@ export function SelectedWork() {
         <h3 id="work-title" className="sr-only">Featured projects</h3>
       </div>
 
-      <div className="mt-20 space-y-28 md:mt-28 md:space-y-44">
+      <div className="mt-14 space-y-20 md:mt-28 md:space-y-44">
         {featuredProjects.map((p, i) => { const num = String(i + 1).padStart(2, "0"); return (
           <article key={p.slug} data-stage className="container-x" aria-labelledby={`stage-${p.slug}`}>
             <div className={`grid items-center gap-10 lg:grid-cols-12 lg:gap-16 ${i % 2 ? "lg:[&>*:first-child]:order-2" : ""}`}>
@@ -32,8 +32,8 @@ export function SelectedWork() {
               <div className="lg:col-span-5">
                 <p className="t-label" data-reveal>{num} — {p.categories.slice(0, 3).join(" · ")}</p>
                 <h4 id={`stage-${p.slug}`} className="t-display mt-4" data-reveal>{p.name}</h4>
-                <p className="mt-4 text-xl leading-snug" data-reveal>{p.tagline}</p>
-                <dl className="mt-8 space-y-5 border-t hairline pt-6 text-sm" data-reveal>
+                <p className="mt-4 text-xl leading-snug text-pretty" data-reveal>{p.tagline}</p>
+                <dl className="mt-8 space-y-5 border-t hairline pt-6 text-base lg:text-sm" data-reveal>
                   <div><dt className="t-label mb-1">Problem</dt><dd className="leading-relaxed text-muted">{p.problem}</dd></div>
                   <div><dt className="t-label mb-1">My role</dt><dd className="leading-relaxed">{p.role}</dd></div>
                   {p.highlight && <div><dt className="t-label mb-1">Engineering highlight</dt><dd className="leading-relaxed">{p.highlight}</dd></div>}
