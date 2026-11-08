@@ -20,7 +20,7 @@ export const examcell: Project = {
   highlight: "Three role-specific portals over one exam lifecycle — from academic setup to published results.",
   repos: ["examcell-private-1"],
   links: {},
-  screenshots: [],
+  screenshots: [{ src: "/images/projects/examcell/examcell-thumbnail.svg", alt: "ExamCell logo centered on a soft lavender background" }],
   problem:
     "University exam offices coordinate courses, rooms, seating, invigilators, marks and results across spreadsheets and email. Every exam season repeats the same manual, error-prone work.",
   solution:
@@ -31,6 +31,6 @@ export const examcell: Project = {
   challenges: [{ title: "Seating and invigilation constraints", detail: "Rooms, capacities, clashes and staff availability all constrain what counts as a valid exam plan." }],
   outcomes: [],
   related: ["unisecure"],
-  pending: ["Source code (repository is empty)", "Technology stack", "Which steps are AI-assisted", "Screenshots", "Deployment / demo link"],
+  pending: ["Source code (repository is empty)", "Technology stack", "Which steps are AI-assisted", "Deployment / demo link"],
   evidence: evidence([profileSource, { label: "Private repository (empty default branch)", kind: "repository" }], "reported", "minimal"),
 };

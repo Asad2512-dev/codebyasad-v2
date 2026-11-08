@@ -2,7 +2,7 @@
 import { useEffect, useRef } from "react";
 import { gsap, prefersReducedMotion } from "@/lib/gsap";
 import { onIdle, whenNear } from "@/lib/schedule";
-import { effects } from "./fx";
+import { effects } from "./effects";
 
 /**
  * Drop inside any server-rendered section: <Fx name="stats" />.
