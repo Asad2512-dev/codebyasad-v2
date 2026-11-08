@@ -26,13 +26,14 @@ const personLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: profile.name,
-  jobTitle: "Full-Stack Software Engineer",
+  jobTitle: profile.role,
+  worksFor: { "@type": "Organization", name: profile.currentCompany },
   url: site.url,
   email: `mailto:${profile.email}`,
   address: { "@type": "PostalAddress", addressLocality: "Multan", addressCountry: "PK" },
   alumniOf: { "@type": "CollegeOrUniversity", name: "National University of Modern Languages (NUML)" },
   sameAs: profile.socials.filter((s) => s.href.startsWith("http")).map((s) => s.href),
-  knowsAbout: ["React", "Next.js", "TypeScript", "Node.js", "Laravel", "Flutter", "MySQL", "PostgreSQL", "AWS", "Docker"],
+  knowsAbout: ["Product design", "UX/UI design", "Design systems", "React", "Next.js", "TypeScript", "Node.js", "Laravel", "Flutter", "MySQL", "PostgreSQL", "AWS", "Docker"],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

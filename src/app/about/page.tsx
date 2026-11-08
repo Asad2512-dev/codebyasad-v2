@@ -6,12 +6,12 @@ import { Philosophy } from "@/components/sections/Philosophy";
 import { Stats } from "@/components/sections/Stats";
 import { Button } from "@/components/ui/Button";
 
-export const metadata = pageMetadata({ title: "About", description: `About ${profile.name} — Full-Stack Software Engineer and Product Engineer in Multan, Pakistan.`, path: "/about/" });
+export const metadata = pageMetadata({ title: "About", description: `About ${profile.name} — ${profile.role} at ${profile.currentCompany}, based in Multan, Pakistan.`, path: "/about/" });
 
 export default function About() {
   return (
     <>
-      <PageHero label="About" title="An engineer who stays for what comes after launch." />
+      <PageHero label="About" title="I design the experience. I engineer the product." />
       <section className="py-20 md:py-28">
         <div className="container-x grid gap-12 lg:grid-cols-12">
           <aside className="lg:col-span-4">

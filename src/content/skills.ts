@@ -1,6 +1,7 @@
 import type { SkillGroup } from "@/types/content";
 
 export const skillGroups: SkillGroup[] = [
+  { id: "design", title: "Product Design", summary: "Experiences designed with the system that will build them in mind.", skills: ["Product design", "UX/UI design", "User journeys", "Interaction design", "Design systems", "Responsive interfaces", "Design-to-development", "Usability"], usedIn: [] },
   { id: "frontend", title: "Frontend Engineering", summary: "Responsive, accessible interfaces for multi-role products.", skills: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "Laravel Blade", "Alpine.js", "Vite"], usedIn: ["ClubSync", "Voice Library", "UniSecure admin"] },
   { id: "backend", title: "Backend Engineering", summary: "APIs, authentication, RBAC and business logic.", skills: ["Node.js", "Express.js", "Laravel", "PHP", "REST APIs", "JWT / OAuth2", "RBAC", "Sequelize", "Eloquent"], usedIn: ["UniSecure", "ClubSync", "Electronic Voting Machine"] },
   { id: "mobile", title: "Mobile Engineering", summary: "Cross-platform apps shipped to Android and iOS.", skills: ["Flutter", "Dart", "GetX", "Provider", "Firebase", "Push notifications", "Flutter Web"], usedIn: ["11 published apps", "UniSecure app", "Cyphersol products"] },

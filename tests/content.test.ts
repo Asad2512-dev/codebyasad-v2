@@ -105,6 +105,29 @@ describe("repository map", () => {
 });
 
 describe("profile content", () => {
+  it("lists Buildexa Technologies first as the current role", () => {
+    const [first] = experience;
+    expect(first.org).toBe("Buildexa Technologies");
+    expect(first.title).toBe("Senior Full-Stack Engineer & Senior Product Designer");
+    expect(first.end).toBe("present");
+    expect(first.current).toBe(true);
+    expect(experience.filter((r) => r.current)).toHaveLength(1);
+  });
+
+  it("keeps every previous role", () => {
+    ["The Code Kraft", "Cyphersol Technologies", "Self-employed"].forEach((org) => expect(experience.some((r) => r.org === org && r.kind === "work")).toBe(true));
+  });
+
+  it("only links roles to projects that exist", () => {
+    experience.forEach((r) => (r.projects ?? []).forEach((slug) => expect(allProjects.some((p) => p.slug === slug), slug).toBe(true)));
+  });
+
+  it("presents both disciplines in the profile", () => {
+    expect(profile.role).toContain("Full-Stack Engineer");
+    expect(profile.role).toContain("Product Designer");
+    expect(profile.hero.support).toContain("Buildexa Technologies");
+  });
+
   it("every stat is verified or explicitly self-reported", () => {
     stats.forEach((s) => expect(["verified", "reported", "pending"]).toContain(s.status));
   });

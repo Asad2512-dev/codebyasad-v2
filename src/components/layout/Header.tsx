@@ -51,7 +51,7 @@ export function Header() {
       <div className="container-x flex h-16 items-center justify-between md:h-20">
         <Link href="/" className="group flex items-baseline gap-2" aria-label={`${profile.name} — home`}>
           <span className="font-display text-2xl leading-none tracking-tight">Asad Ullah</span>
-          <span className="hidden font-mono text-[10px] tracking-widest text-muted uppercase sm:inline">/ Engineer</span>
+          <span className="hidden font-mono text-[10px] tracking-widest text-muted uppercase sm:inline">/ Design × Engineering</span>
         </Link>
 
         <nav aria-label="Primary" className="hidden lg:block">

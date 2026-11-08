@@ -15,10 +15,10 @@ export function Hero() {
         <div className="container-x relative grid h-full grid-rows-[auto_1fr] items-center pt-24 md:grid-cols-12 md:grid-rows-1 md:pt-20">
           <div data-hero-copy className="relative z-10 md:col-span-7">
             <p className="hero-fade t-label mb-6" style={{ animationDelay: "0s" }} data-hero-fade>{hero.label}</p>
-            <h1 id="hero-title" className="t-hero">
+            <h1 id="hero-title" className="t-hero t-hero--split">
               {hero.headline.map((line, i) => (
                 <span key={line} className="mask">
-                  <span className={`hero-line ${i === 2 ? "italic text-accent" : ""}`} style={{ animationDelay: `${i * 0.12}s` }}>{line}</span>
+                  <span className={`hero-line ${i === hero.accentLine ? "italic text-accent" : i % 2 ? "italic" : ""}`} style={{ animationDelay: `${i * 0.12}s` }}>{line}</span>
                 </span>
               ))}
             </h1>

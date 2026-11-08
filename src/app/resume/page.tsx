@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/seo";
 import { Button } from "@/components/ui/Button";
 import { PrintButton } from "@/components/ui/PrintButton";
 
-export const metadata = pageMetadata({ title: "Resume", description: `Resume of ${profile.name}, Full-Stack Software Engineer — experience, skills, projects and education.`, path: "/resume/" });
+export const metadata = pageMetadata({ title: "Resume", description: `Resume of ${profile.name}, ${profile.role} at ${profile.currentCompany} — experience, skills, projects and education.`, path: "/resume/" });
 
 export default function ResumePage() {
   // Only offer a PDF download if the file has actually been added.
@@ -29,7 +29,7 @@ export default function ResumePage() {
         <article className="mx-auto max-w-4xl rounded-[var(--radius-lg)] border hairline bg-surface p-6 shadow-soft sm:p-12 print:border-0 print:p-0 print:shadow-none">
           <header className="border-b hairline pb-8">
             <h1 className="font-display text-5xl sm:text-6xl">{profile.name}</h1>
-            <p className="mt-2 text-lg">Senior Full-Stack Software Engineer · Product Engineer</p>
+            <p className="mt-2 text-lg">{profile.role} · {profile.currentCompany}</p>
             <p className="mt-4 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs text-muted">
               <span>{profile.location}</span>
               <a href={`mailto:${profile.email}`} className="hover:text-accent">{profile.email}</a>
@@ -41,7 +41,7 @@ export default function ResumePage() {
 
           <section className="border-b hairline py-8" aria-labelledby="r-summary">
             <h2 id="r-summary" className="t-label mb-3">Summary</h2>
-            <p className="leading-relaxed">Full-Stack Software Engineer with 3+ years building and maintaining production web and mobile products — frontend interfaces, REST APIs, databases, authentication, deployment and maintenance. Reported portfolio of 11 published mobile apps and 13 web properties. First place, MNS University Library App Development Competition (2025).</p>
+            <p className="leading-relaxed">Senior Full-Stack Engineer and Senior Product Designer at Buildexa Technologies, with 3+ years designing, building and maintaining production web and mobile products — user experience and interfaces, REST APIs, databases, authentication, deployment and maintenance. Reported portfolio of 11 published mobile apps and 13 web properties. First place, MNS University Library App Development Competition (2025).</p>
           </section>
 
           <section className="border-b hairline py-8" aria-labelledby="r-exp">
@@ -51,10 +51,11 @@ export default function ResumePage() {
                 <div key={r.id} className="break-inside-avoid">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
                     <h3 className="font-medium">{r.title} — {r.org}</h3>
-                    <p className="font-mono text-xs text-muted">{formatPeriod(r)} · {r.location}</p>
+                    <p className="font-mono text-xs text-muted">{formatPeriod(r)} · {r.location}{r.workMode ? ` · ${r.workMode}` : ""}</p>
                   </div>
                   <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted">
                     {r.points.map((p) => <li key={p}>{p}</li>)}
+                    {r.disciplines?.map((d) => <li key={d.title}><span className="text-ink">{d.title}:</span> {d.items.join(", ")}</li>)}
                     {r.reported?.map((p) => <li key={p}>{p}</li>)}
                   </ul>
                 </div>

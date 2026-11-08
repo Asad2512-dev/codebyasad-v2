@@ -2,7 +2,8 @@ import type { Link } from "@/types/content";
 
 export const profile = {
   name: "Muhammad Asad Ullah",
-  role: "Full-Stack Engineer / Product Engineer",
+  role: "Senior Full-Stack Engineer & Senior Product Designer",
+  currentCompany: "Buildexa Technologies",
   location: "Multan, Pakistan",
   timezone: "PKT (UTC+5)",
   email: "masadullah1206@gmail.com",
@@ -11,10 +12,12 @@ export const profile = {
   experienceYears: 3,
 
   hero: {
-    label: "Full-Stack Engineer / Product Engineer",
-    headline: ["I engineer", "ideas into", "products."],
+    label: "Design × Engineering",
+    headline: ["I design", "the experience.", "I engineer", "the product."],
+    /** Index of the headline line set in the accent colour. */
+    accentLine: 3,
     support:
-      "Full-Stack Software Engineer building scalable digital products, intelligent systems, and production-ready web and mobile experiences.",
+      "Senior Full-Stack Engineer & Senior Product Designer at Buildexa Technologies, creating thoughtfully designed, scalable digital products from concept to production.",
     ctas: {
       primary: { label: "Explore My Work", href: "/work/" },
       secondary: { label: "View Resume", href: "/resume/" },
@@ -23,25 +26,24 @@ export const profile = {
   },
 
   identity: {
-    headline: "From architecture to production.",
+    label: "Design × Engineering",
+    headline: "From first idea to production.",
     intro:
-      "I take products from a page of requirements to software people rely on — and I stay for what comes after launch. Most of my work is end-to-end: the data model, the API, the interface, the mobile client and the server it all runs on.",
+      "I work on both sides of a product: the experience people see and the systems that make it work. Designing the journey and building the architecture together means fewer hand-offs, and decisions that hold up in production.",
     pipeline: [
-      { step: "Requirements", text: "Turn business needs into roles, workflows and a scope that can ship." },
-      { step: "Architecture", text: "Model data, boundaries and permissions before writing features." },
-      { step: "Backend", text: "REST APIs, authentication and RBAC in Laravel or Node.js/Express." },
-      { step: "Frontend", text: "Responsive interfaces in React, Next.js, Blade and Tailwind." },
-      { step: "Mobile", text: "Cross-platform Flutter apps for Android and iOS, published to stores." },
-      { step: "Data", text: "Relational schemas in MySQL and PostgreSQL; MongoDB and Firebase where they fit." },
-      { step: "Deployment", text: "Linux servers, Nginx, Docker and AWS EC2/S3; release processes." },
-      { step: "Maintenance", text: "Debugging, monitoring and iterating on software in production." },
+      { step: "Discover", discipline: "design", text: "Understand the users, the business and the problem worth solving." },
+      { step: "Design", discipline: "design", text: "User journeys, interaction design and interfaces built on a consistent design system." },
+      { step: "Architect", discipline: "engineering", text: "Data model, boundaries, permissions and APIs planned before features." },
+      { step: "Build", discipline: "engineering", text: "Full-stack implementation — Laravel or Node.js backends, React/Next.js and Flutter clients." },
+      { step: "Deploy", discipline: "engineering", text: "Linux servers, Nginx, Docker and cloud; release processes for web and app stores." },
+      { step: "Improve", discipline: "design", text: "Observe real usage, fix what hurts and refine the experience." },
     ],
   },
 
   about: {
     paragraphs: [
-      "I'm Muhammad Asad Ullah, a Full-Stack Software Engineer from Multan, Pakistan. I build complete web and cross-platform mobile products — frontend interfaces, backend services, REST APIs, databases, authentication, deployment and ongoing production maintenance.",
-      "I enjoy turning practical requirements into maintainable software: responsive web platforms, Flutter applications, multi-role business systems and research implementations. Since 2022 I have freelanced for clients while working with product teams at Cyphersol Technologies and The Code Kraft.",
+      "I'm Muhammad Asad Ullah, a Senior Full-Stack Engineer and Senior Product Designer at Buildexa Technologies, based in Multan, Pakistan and working remotely. I design product experiences and engineer the systems behind them — from user journeys and interfaces to APIs, databases, deployment and ongoing production maintenance.",
+      "I enjoy turning practical requirements into maintainable software: responsive web platforms, Flutter applications, multi-role business systems and research implementations. Before Buildexa I worked with product teams at Cyphersol Technologies and The Code Kraft, alongside freelance work since 2022.",
       "Outside product work I explore computer vision and deep learning, particularly frequency-domain methods and deepfake detection.",
     ],
   },
@@ -61,7 +63,7 @@ export const profile = {
 
   contact: {
     headline: "Let's build something that matters.",
-    text: "I'm interested in Senior Full-Stack, Product Engineering and Backend roles with teams that ship. The fastest way to reach me is email.",
+    text: "I'm a Senior Full-Stack Engineer & Senior Product Designer at Buildexa Technologies. For collaborations and conversations about product design, full-stack engineering or product engineering, email is the fastest way to reach me.",
   },
 
   socials: [

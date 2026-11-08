@@ -18,6 +18,15 @@ Per-project gaps are also in `pending` on each entry and in the “Missing” co
    Two private repositories are excluded as not original work (see the local full audit) — confirm.
 4. **Ownership split** on MenuWave and TotalCashPro: sole engineer, lead, or part of a team (Buildexa)?
 
+## Buildexa Technologies (current role) — please confirm
+
+- Responsibilities and any achievements you want shown (none are claimed yet).
+- Technologies you use in this role.
+- Which products you work on at Buildexa. MenuWave, TotalCashPro, BiteRush and LabelBuddy appear on Buildexa's
+  website, but they are **not** attributed to your role until you confirm; only the Buildexa site/console is linked.
+- City for the location line (currently “Pakistan”) and whether the start month (Aug 2026) is exact.
+- Whether The Code Kraft (to Oct 2026) overlapped with Buildexa (from Aug 2026) — both are shown as stated.
+
 ## Flagship gaps
 
 - **ExamCell** — its repository is empty. Push the code, or confirm stack, AI features and a demo link.

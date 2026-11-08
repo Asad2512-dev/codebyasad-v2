@@ -1,7 +1,27 @@
 import type { Role } from "@/types/content";
 
-/** Source: Asad's GitHub profile README (github.com/Asad2512-dev). Newest first. */
+/** Sources: Asad's GitHub profile README and his direct confirmation (Buildexa, Nov 2026). Newest first. */
 export const experience: Role[] = [
+  {
+    id: "buildexa",
+    title: "Senior Full-Stack Engineer & Senior Product Designer",
+    org: "Buildexa Technologies",
+    location: "Pakistan",
+    workMode: "Remote",
+    start: "2026-08",
+    end: "present",
+    current: true,
+    kind: "work",
+    summary: "Current role combining product design and full-stack engineering — shaping the user experience and building the systems behind it.",
+    points: [],
+    disciplines: [
+      { title: "Full-stack engineering", items: ["Frontend and backend development", "Software architecture", "Database design", "API development", "SaaS and product engineering", "Infrastructure and deployment", "Performance and maintainability"] },
+      { title: "Product design", items: ["Product and UX/UI design", "User journeys and interaction design", "Design systems", "Responsive interface design", "Design-to-development workflows", "Usability and visual consistency"] },
+    ],
+    // Buildexa's own website and staff console (repositories in the audit). Other products are not attributed to this role until confirmed.
+    projects: ["buildexa"],
+    pending: ["Specific responsibilities and achievements", "Technologies used in this role", "Which Buildexa products you work on (MenuWave, TotalCashPro, BiteRush, LabelBuddy?)"],
+  },
   {
     id: "codekraft",
     title: "Senior Flutter Developer",

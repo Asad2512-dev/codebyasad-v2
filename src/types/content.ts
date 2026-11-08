@@ -26,6 +26,14 @@ export interface Role {
   /** Figures that are self-reported, shown with a "reported" tag. */
   reported?: string[];
   kind: "work" | "education" | "award";
+  current?: boolean;
+  workMode?: string;
+  /** Capability areas for combined roles (not claims about specific deliverables). */
+  disciplines?: { title: string; items: string[] }[];
+  /** Project slugs with a confirmed relationship to this role. */
+  projects?: string[];
+  /** Details still to be confirmed (internal; not rendered). */
+  pending?: string[];
 }
 
 /** Catalogue categories. A project may belong to several. */

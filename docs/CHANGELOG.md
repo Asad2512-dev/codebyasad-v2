@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-08 — Current role: Buildexa Technologies
+- Added Senior Full-Stack Engineer & Senior Product Designer at Buildexa Technologies (Aug 2026 – present, remote) as the first, current role; previous roles unchanged.
+- New positioning “Design × Engineering”: hero “I design the experience. I engineer the product.”, Discover → Design → Architect → Build → Deploy → Improve pipeline, Product Design expertise group.
+- Updated About, Experience, Expertise, Resume, Contact, SEO titles/descriptions, JSON-LD (jobTitle, worksFor) and the OG image.
+- Only the Buildexa website/staff console is linked to the role; other products await confirmation.
+- Unpublished Rayvon Scents, BlogByAsad and CodeByAsad; SmartPrepX recast as a mobile app; education separated from the experience timeline.
+
 ## 2026-11-08 — Phase 2: complete portfolio, repository audit, catalogue
 
 ### Audit

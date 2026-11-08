@@ -2,9 +2,9 @@ export const site = {
   url: "https://codebyasad.com",
   name: "Muhammad Asad Ullah",
   shortName: "Asad Ullah",
-  title: "Muhammad Asad Ullah — Full-Stack Software Engineer",
+  title: "Muhammad Asad Ullah — Senior Full-Stack Engineer & Product Designer",
   description:
-    "Full-Stack Software Engineer and Product Engineer in Multan, Pakistan. 3+ years building production web platforms, Flutter apps, APIs and the infrastructure behind them.",
+    "Senior Full-Stack Engineer & Senior Product Designer at Buildexa Technologies. Designing product experiences and engineering scalable web and mobile systems from concept to production.",
   locale: "en_US",
   /** Put the PDF at public/resume/Muhammad-Asad-Ullah-Resume.pdf */
   resumePdf: "/resume/Muhammad-Asad-Ullah-Resume.pdf",

@@ -9,7 +9,7 @@ export function Expertise({ showHeader = true }: { showHeader?: boolean }) {
   return (
     <section aria-labelledby="expertise-title" className="border-t hairline bg-surface py-24 md:py-36">
       <div className="container-x">
-        {showHeader && <SectionHeader index="06" label="Technology expertise" title="A working atlas, not a logo wall." />}
+        {showHeader && <SectionHeader index="06" label="Design × Engineering" title="Two disciplines, one product mindset." />}
         <H id="expertise-title" className="sr-only">Expertise areas</H>
         <ul className="mt-14 grid border-t border-l hairline sm:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((g, i) => (
@@ -25,7 +25,7 @@ export function Expertise({ showHeader = true }: { showHeader?: boolean }) {
                   <li key={s} className="rounded-full border hairline px-2.5 py-1 font-mono text-[11px] text-muted transition-colors duration-500 group-hover:border-accent/40 group-hover:bg-accent-soft/50 group-hover:text-ink group-focus-visible:border-accent/40 group-focus-visible:bg-accent-soft/50 group-focus-visible:text-ink">{s}</li>
                 ))}
               </ul>
-              <p className="mt-5 font-mono text-[10px] tracking-wider text-muted uppercase">Used in · {g.usedIn.join(" · ")}</p>
+              {g.usedIn.length > 0 && <p className="mt-5 font-mono text-[10px] tracking-wider text-muted uppercase">Used in · {g.usedIn.join(" · ")}</p>}
             </li>
           ))}
         </ul>
