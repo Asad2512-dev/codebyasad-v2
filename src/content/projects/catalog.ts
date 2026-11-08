@@ -93,7 +93,8 @@ export const catalog: Project[] = [
     tagline: "An exam-preparation app with MCQs, past papers and practice tests.",
     summary: "A published mobile app for MCQs, past papers and practice assessments, powered by a Laravel backend with OpenAI and Firebase named in its configuration.",
     categories: ["Mobile", "Backend", "AI"], technologies: ["Laravel", "PHP", "Firebase", "OpenAI", "Vite", "Tailwind CSS"],
-    repos: ["prepx-private-1"], fromProfile: true, pending: ["Screenshots", "Store link", "Mobile client repository", "How OpenAI is used"],
+    repos: ["prepx-private-1"], fromProfile: true, pending: ["Store link", "Mobile client repository", "How OpenAI is used"],
+    screenshots: [{ src: "/images/projects/prepx/prepx-thumbnail.svg", alt: "SmartPrepX logo centered on a soft green background" }],
   }),
   entry({
     slug: "wecare", name: "WeCare",
@@ -101,7 +102,7 @@ export const catalog: Project[] = [
     summary: "A Flutter app with separate patient and doctor flows, plus a Laravel admin panel that uses Pusher for real-time updates.",
     categories: ["Mobile", "Web", "Backend"], technologies: ["Flutter", "GetX", "Laravel", "Sanctum", "Alpine.js", "Tailwind CSS", "Pusher"],
     repos: ["wecare-private-1", "wecare-private-2"], modules: ["Patient", "Doctor", "Admin"],
-    screenshots: [{ src: "/images/projects/wecare/wecare-thumbnail.webp", alt: "WeCare project thumbnail with its app branding" }],
+    screenshots: [{ src: "/images/projects/wecare/wecare-thumbnail.svg", alt: "WeCare logo centered on a soft green background" }],
   }),
   entry({
     slug: "coresy", published: false, name: "CoreSY Suite",
@@ -118,13 +119,13 @@ export const catalog: Project[] = [
     summary: "A Flutter app with admin, business and user roles, subscriptions and Firebase authentication and data.",
     categories: ["Mobile", "SaaS"], technologies: ["Flutter", "GetX", "Firebase Auth", "Cloud Firestore"], repos: ["qik-e-private-1"],
     modules: ["Admin", "Business", "User", "Subscription"],
-    screenshots: [{ src: "/images/projects/qik-e/qik-e-thumbnail.webp", alt: "Qik-E project thumbnail with its app branding" }],
+    screenshots: [{ src: "/images/projects/qik-e/qik-e-thumbnail.svg", alt: "Qik-E logo centered on a deep blue background" }],
   }),
   entry({
     slug: "session-buddy", name: "Session Buddy", tagline: "A Flutter app built with Firebase and GetX.",
     summary: "A Flutter application using Firebase Authentication, Cloud Firestore and GetX.",
     categories: ["Mobile"], technologies: ["Flutter", "Firebase", "Cloud Firestore", "Firebase Auth", "GetX"], repos: ["session_buddy"],
-    screenshots: [{ src: "/images/projects/session-buddy/session-buddy-thumbnail.webp", alt: "Session Buddy project thumbnail with its app branding" }],
+    screenshots: [{ src: "/images/projects/session-buddy/session-buddy-thumbnail.svg", alt: "Session Buddy logo centered on a soft green background" }],
     pending: ["Product description"],
   }),
 
@@ -162,6 +163,7 @@ export const catalog: Project[] = [
     summary: "A Laravel food-service project in two generations: a Livewire storefront, and a v2 rebuild that adds a full POS with role permissions.",
     categories: ["Web", "Backend"], technologies: ["Laravel", "Livewire", "Alpine.js", "Tailwind CSS", "Spatie Permission", "Redis"],
     repos: ["flames-and-shakes-private-1", "flames-and-shakes-private-2"], fromProfile: true,
+    screenshots: [{ src: "/images/projects/flames-and-shakes/flames-and-shakes-thumbnail.svg", alt: "Flames & Shakes logo centered on a warm orange background" }],
   }),
   entry({
     slug: "rayvon-scents", published: false, name: "Rayvon Scents", tagline: "An e-commerce store for fragrances.",
@@ -207,7 +209,7 @@ export const catalog: Project[] = [
     categories: ["Mobile", "SaaS"], technologies: ["Flutter", "BLoC", "Dio", "Firebase", "FCM", "Hive", "Google Maps", "Stripe"],
     repos: ["gobirr-private-1", "gobirr-private-2"], fromProfile: true,
     role: "Rebranding, customisation, integration and store release.",
-    pending: ["Store links", "Which features were customised"],
+    pending: ["Store links", "Which features were customised", "Screenshots"],
   }),
   entry({
     slug: "beyond-today", name: "Beyond Today", tagline: "Digital legacy and estate planning.",
@@ -215,19 +217,20 @@ export const catalog: Project[] = [
     categories: ["Mobile"], technologies: ["Flutter", "GetX", "Firebase Auth", "Cloud Firestore"], repos: ["beyond-today-private-1"], fromProfile: true,
     modules: ["Final wishes", "Documents", "Passwords", "Funeral", "Trusted contacts", "Messages", "Unlock", "Subscription"],
     highlight: "Trusted-contact 'unlock' flow that controls when stored messages and documents are released.",
-    pending: ["Store link", "Screenshots"],
+    pending: ["Store link"],
+    screenshots: [{ src: "/images/projects/beyond-today/beyond-today-thumbnail.svg", alt: "Beyond Today logo centered on a soft blue background" }],
   }),
   entry({
     slug: "lite-nurse-clinic", name: "Lite Nurse Clinic", tagline: "Booking app for professional skincare services.",
     summary: "A Flutter app for a skincare clinic's consultations and appointments, with App Store assets prepared in the repository.",
     categories: ["Mobile"], technologies: ["Flutter", "GetX", "Firebase"], repos: ["lite-nurse-clinic-private-1"], fromProfile: true, pending: ["Store link"],
-    screenshots: [{ src: "/images/projects/lite-nurse-clinic/lite-nurse-clinic-thumbnail.webp", alt: "Lite Nurse Clinic project thumbnail with its app branding" }],
+    screenshots: [{ src: "/images/projects/lite-nurse-clinic/lite-nurse-clinic-thumbnail.svg", alt: "Lite Nurse Clinic logo centered on a soft rose background" }],
   }),
   entry({
     slug: "blueprint-health-fitness", name: "Blueprint Health & Fitness", tagline: "Workout programmes and progress tracking.",
     summary: "A Flutter app for workout programmes and tracking progress.",
     categories: ["Mobile"], technologies: ["Flutter", "GetX"], repos: ["blueprint-health-fitness-private-1"], fromProfile: true, pending: ["Store link"],
-    screenshots: [{ src: "/images/projects/blueprint-health-fitness/blueprint-health-fitness-thumbnail.webp", alt: "Blueprint Health & Fitness project thumbnail with its app branding" }],
+    screenshots: [{ src: "/images/projects/blueprint-health-fitness/blueprint-health-fitness-thumbnail.svg", alt: "Blueprint Health & Fitness logo centered on a soft blue background" }],
   }),
   entry({
     slug: "online-barber", published: false, name: "Online Barber", tagline: "Barber and salon booking with admin, barber and customer roles.",
@@ -239,12 +242,14 @@ export const catalog: Project[] = [
     slug: "quicksaver", name: "QuickSaver", tagline: "A social video downloader.",
     summary: "A Flutter utility for saving social videos, with direct downloads and a download history.",
     categories: ["Mobile", "Tools"], technologies: ["Flutter", "GetX"], repos: ["quicksaver-private-1"], fromProfile: true, pending: ["Store link"],
+    screenshots: [{ src: "/images/projects/quicksaver/quicksaver-thumbnail.svg", alt: "QuickSaver logo centered on a soft green background" }],
   }),
   entry({
     slug: "top-coaches", name: "Top Coaches", tagline: "Published mobile application.",
     summary: "A published Flutter application listed in Asad's portfolio. The repository holds only a README, so no further detail is shown.",
     categories: ["Mobile"], technologies: ["Flutter"], repos: ["top-coaches-private-1"], fromProfile: true,
     verification: "reported", completeness: "minimal", pending: ["Source code", "Description", "Store link"],
+    screenshots: [{ src: "/images/projects/top-coaches/top-coaches-thumbnail.svg", alt: "Top Coaches logo centered on a warm neutral background" }],
   }),
   entry({
     slug: "mood-panda", published: false, name: "Mood Panda", tagline: "A mood app, rebuilt in a second version.",
@@ -256,18 +261,20 @@ export const catalog: Project[] = [
     summary: "A Flutter app covering academies, pitch booking, tournaments, U18 competitions, matchmaking, a shop, sponsors, media and multiple languages.",
     categories: ["Mobile"], technologies: ["Flutter", "GetX"], repos: ["jordanian-sports-private-1"],
     modules: ["Academies", "Pitch booking", "Tournaments", "Matchmaking", "Shop", "Sponsors", "Community"],
-    screenshots: [{ src: "/images/projects/jordanian-sports/jordanian-sports-thumbnail.webp", alt: "Jordanian Sports project thumbnail with JSC branding" }],
+    screenshots: [{ src: "/images/projects/jordanian-sports/jordanian-sports-thumbnail.svg", alt: "Jordanian Sports logo centered on a soft blue background" }],
   }),
   entry({
     slug: "odyssey-hub", name: "Odyssey Hub", tagline: "A Flutter mobile app built with GetX and Dio.",
     summary: "A Flutter application using GetX for state management and Dio for networking. Product features and screenshots are not yet documented.",
     categories: ["Mobile"], technologies: ["Flutter", "GetX", "Dio"], repos: ["odyssy_hub"],
-    pending: ["Product description", "Screenshots"],
+    pending: ["Product description"],
+    screenshots: [{ src: "/images/projects/odyssey-hub/odyssey-hub-thumbnail.svg", alt: "Odyssey Hub logo centered on a soft turquoise background" }],
   }),
   entry({
     slug: "football-app", name: "Football App", tagline: "Player profiles, favourites, chat and payments for football fans.",
     summary: "A Flutter app with player profiles, sports views, favourites, chat, sponsors and payments on Firebase.",
     categories: ["Mobile"], technologies: ["Flutter", "GetX", "Firebase Auth", "Cloud Firestore"], repos: ["football-app-private-1"],
+    screenshots: [{ src: "/images/projects/football-app/football-app-thumbnail.svg", alt: "Football App logo centered on a soft green background" }],
   }),
   entry({
     slug: "safe-city", name: "Safe City", tagline: "Citizen safety reporting with an admin side.",
@@ -278,6 +285,7 @@ export const catalog: Project[] = [
     slug: "budget-mart", name: "Budget Mart", tagline: "A shopping app with customer and admin roles.",
     summary: "A Flutter shopping app ('Smart Shopping') with user and admin sides, Firebase and Google Maps.",
     categories: ["Mobile"], technologies: ["Flutter", "GetX", "Firebase Auth", "Cloud Firestore", "FCM", "Google Maps"], repos: ["budget-mart-private-1"],
+    screenshots: [{ src: "/images/projects/budget-mart/budget-mart-thumbnail.svg", alt: "Budget Mart logo centered on a soft mint background" }],
   }),
   entry({
     slug: "softheal", name: "SoftHeal", tagline: "Guided healing programmes, journaling and urge intervention.",
@@ -289,6 +297,7 @@ export const catalog: Project[] = [
     slug: "smart-splitter", name: "Smart Splitter", tagline: "Split bills with groups and contacts.",
     summary: "A Flutter app for splitting expenses across groups and contacts, with a scan-and-pay flow.",
     categories: ["Mobile"], technologies: ["Flutter", "GetX"], repos: ["smart-splitter-private-1"],
+    screenshots: [{ src: "/images/projects/smart-splitter/smart-splitter-thumbnail.svg", alt: "Smart Splitter logo centered on a soft purple background" }],
   }),
   entry({
     slug: "student-boys-hostel", published: false, name: "Student Hostel Manager", tagline: "Rooms, students, rent and inspections for hostel owners.",
@@ -307,13 +316,14 @@ export const catalog: Project[] = [
     categories: ["Mobile", "AI"], technologies: ["Flutter", "GetX"], repos: ["askio-ai-private-1", "askio-ai-private-2"],
     modules: ["AI chat", "Classroom", "Schedule", "Results", "Resources", "Notifications"],
     pending: ["Which AI model/provider powers chat", "Whether the second NUML repository is part of this project"],
+    screenshots: [{ src: "/images/projects/askio-ai/askio-ai-thumbnail.svg", alt: "Askio AI logo centered on a deep indigo background" }],
   }),
   entry({
     slug: "clinic-token", name: "Clinic Token System", tagline: "A desktop queue system for clinics.",
     summary: "A Flutter desktop app with receptionist and doctor panels and an LCD display view for calling tokens, storing data locally in SQLite.",
     categories: ["Mobile", "Enterprise", "Tools"], technologies: ["Flutter (desktop)", "GetX", "SQLite"], repos: ["clinic-token-private-1"],
     modules: ["Receptionist panel", "Doctor panel", "LCD display"],
-    screenshots: [{ src: "/images/projects/clinic-token/clinic-token-thumbnail.webp", alt: "Clinic Token System project thumbnail with its app branding" }],
+    screenshots: [{ src: "/images/projects/clinic-token/clinic-token-thumbnail.svg", alt: "Clinic Token System logo centered on a soft teal background" }],
   }),
   entry({
     slug: "muatabarea", published: false, name: "Muatabarea", tagline: "A Flutter app with Firebase, maps and push notifications.",
@@ -331,7 +341,7 @@ export const catalog: Project[] = [
     summary: "A Flutter app with AI tips (Gemini), articles, a marketplace, chat and admin tools, plus a Node.js/Express and MySQL API.",
     categories: ["Mobile", "AI", "Backend"], technologies: ["Flutter", "GetX", "Firebase", "Gemini", "Node.js", "Express", "MySQL"],
     repos: ["GreenGuide", "greenguide-private-1"],
-    screenshots: [{ src: "/images/projects/greenguide/greenguide-thumbnail.webp", alt: "GreenGuide project thumbnail with its app branding" }],
+    screenshots: [{ src: "/images/projects/greenguide/greenguide-thumbnail.svg", alt: "GreenGuide logo centered on a soft green background" }],
   }),
   entry({
     slug: "loombyte", name: "LoomByte", tagline: "A Next.js site with GSAP and Three.js.",
@@ -398,6 +408,7 @@ export const catalog: Project[] = [
     summary: "Voter authentication, candidate management, duplicate-vote protection, audit trails and results, built with React, Node.js/Express, MongoDB and JWT.",
     categories: ["Web", "Backend"], technologies: ["React", "Node.js", "Express", "MongoDB", "JWT"], repos: [], fromProfile: true,
     verification: "reported", completeness: "minimal", pending: ["Repository link"],
+    screenshots: [{ src: "/images/projects/electronic-voting-machine/electronic-voting-machine-thumbnail.svg", alt: "Electronic Voting Machine logo centered on a soft blue background" }],
   }),
   entry({
     slug: "supervisor-allocation", name: "Supervisor Allocation System", origin: "academic",
@@ -405,5 +416,6 @@ export const catalog: Project[] = [
     summary: "Supervisor capacity, proposals, expertise-based matching and allocation workflows, built with Laravel, Blade, Tailwind, Alpine.js and MySQL.",
     categories: ["Web", "Backend", "Enterprise"], technologies: ["Laravel", "Blade", "Tailwind CSS", "Alpine.js", "MySQL"], repos: [], fromProfile: true,
     verification: "reported", completeness: "minimal", pending: ["Repository link"],
+    screenshots: [{ src: "/images/projects/supervisor-allocation/supervisor-allocation-thumbnail.svg", alt: "Supervisor Allocation System logo centered on a soft blue background" }],
   }),
 ];
