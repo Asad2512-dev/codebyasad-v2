@@ -3,7 +3,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Timeline } from "@/components/sections/Timeline";
 import { Button } from "@/components/ui/Button";
 
-export const metadata = pageMetadata({ title: "Experience", description: "Roles at The Code Kraft, Cyphersol Technologies and as a freelance software engineer, plus education and awards.", path: "/experience/" });
+export const metadata = pageMetadata({ title: "Experience", description: "Roles at The Code Kraft, Cyphersol Technologies and as a freelance software engineer, plus awards and education.", path: "/experience/" });
 
 export default function ExperiencePage() {
   return (

@@ -32,7 +32,7 @@ No credentials were printed or committed. Private repositories appear under neut
   (MenuWave ×4, BiteRush ×5, CoreSY ×6, Tangled Synapses ×6, LabelBuddy ×2, BuildExa ×2, WeCare ×2, GreenGuide ×2, Flames & Shakes ×2, GoBirr ×2, Mood Panda ×2, Askio AI ×2, CodeByAsad ×2).
 - **6 more** are listed in the profile README without a repository (EVM, Supervisor Allocation, Pak Enterprises Tiles, Dr. Farhan Siddique, RCR-DeepFake, FreqKAN).
 - **ExamCell** (flagship) maps to a private repository whose default branch is empty — the case study uses profile content only.
-- **Total published: 55.** Nothing in the evidence justifies removing exactly 14; to reach 41, set `published: false` on entries in `src/content/projects/catalog.ts` (candidates are listed in CONTENT-GAPS.md).
+- **Total published: 52.** Nothing in the evidence justifies removing exactly 11; to reach 41, set `published: false` on entries in `src/content/projects/catalog.ts` (candidates are listed in CONTENT-GAPS.md).
 - **Provenance flags:** BiteRush (6amMart base) and GoBirr (eDemand rebrand) are labelled “customised”; two private repositories (an adapted copy of an open-source project and a third-party commercial codebase) are excluded as not original work.
 - Profile apps without repositories: Smart Cubz, Urdu Poetry, Campus Ride — not published (no description to show).
 

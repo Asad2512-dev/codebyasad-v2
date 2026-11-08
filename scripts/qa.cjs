@@ -63,7 +63,7 @@ const routes = [...sitemap.matchAll(/<loc>https:\/\/codebyasad\.com(\/[^<]*)<\/l
   await page.getByRole("button", { name: /^All projects/ }).click();
   await page.locator("[aria-label='Filter by technology'] button", { hasText: /^Laravel$/ }).click(); await page.waitForTimeout(300);
   const lv = await count(); if (!(lv > 0 && lv < total)) fail("tech filter Laravel", lv);
-  await page.getByRole("radio", { name: /Technical index/ }).click(); await page.waitForTimeout(300);
+  await page.getByRole("radio", { name: "Technical index" }).click(); await page.waitForTimeout(300);
   if ((await page.locator("table tbody tr:not([hidden])").count()) !== lv) fail("index view row count mismatch");
   if (await page.locator('[data-view-panel="grid"]').isVisible()) fail("grid still visible in index view");
   await page.goto(base + "/work/?category=Mobile&view=index", { waitUntil: "networkidle" }); await page.waitForTimeout(300);

@@ -4,6 +4,7 @@ import { experience, formatPeriod } from "@/content/experience";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
 const icons = { work: Briefcase, education: GraduationCap, award: Award };
+const education = experience.filter((r) => r.kind === "education");
 
 export function Timeline({ showHeader = true, detailed = false }: { showHeader?: boolean; detailed?: boolean }) {
   const H = showHeader ? "h3" : "h2";
@@ -18,7 +19,7 @@ export function Timeline({ showHeader = true, detailed = false }: { showHeader?:
         <ol data-timeline className="relative mt-16 md:ml-[25%]">
           <span aria-hidden className="absolute top-0 bottom-0 left-[15px] w-px bg-line" />
           <span data-progress aria-hidden className="absolute top-0 bottom-0 left-[15px] w-px origin-top bg-accent" />
-          {experience.map((r) => {
+          {experience.filter((r) => r.kind !== "education").map((r) => {
             const Icon = icons[r.kind];
             return (
               <li key={r.id} className="relative pb-14 pl-14 last:pb-0" data-reveal>
@@ -44,6 +45,24 @@ export function Timeline({ showHeader = true, detailed = false }: { showHeader?:
             );
           })}
         </ol>
+
+        {education.length > 0 && (
+          <div className="mt-20 md:ml-[25%]" aria-labelledby="education-title">
+            <p id="education-title" className="t-label mb-6" data-reveal>Education</p>
+            <ul className="grid gap-4 sm:grid-cols-2">
+              {education.map((r) => (
+                <li key={r.id} className="flex gap-4 rounded-[var(--radius-lg)] border hairline bg-surface p-6" data-reveal>
+                  <span aria-hidden className="grid size-10 shrink-0 place-items-center rounded-full border hairline text-accent"><GraduationCap className="size-4" /></span>
+                  <div>
+                    <p className="font-mono text-xs text-muted">{formatPeriod(r)}</p>
+                    <p className="mt-1 text-lg font-medium">{r.title}</p>
+                    <p className="text-sm text-muted">{r.org} · {r.location}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </section>
   );

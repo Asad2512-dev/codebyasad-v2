@@ -98,11 +98,11 @@ export function CatalogueControls() {
               className="h-11 w-full rounded-full border hairline bg-surface pr-10 pl-11 text-sm outline-none placeholder:text-muted/80 focus:border-accent" />
             {q && <button type="button" onClick={() => setQ("")} aria-label="Clear search" className="absolute top-1/2 right-2 grid size-8 -translate-y-1/2 place-items-center rounded-full hover:bg-paper"><X className="size-4" /></button>}
           </label>
-          <div role="radiogroup" aria-label="Display mode" className="flex shrink-0 rounded-full border hairline bg-surface p-1">
-            {([["grid", "Editorial grid", LayoutGrid], ["index", "Technical index", List]] as const).map(([v, label, Icon]) => (
-              <button key={v} type="button" role="radio" aria-checked={view === v} onClick={() => setView(v)}
-                className={cn("inline-flex h-9 flex-1 items-center justify-center gap-2 rounded-full px-4 text-sm transition-colors", view === v ? "bg-ink text-paper" : "text-muted hover:text-ink")}>
-                <Icon className="size-4" aria-hidden /><span>{label}</span>
+          <div role="radiogroup" aria-label="Display mode" className="flex shrink-0 self-start lg:self-auto rounded-full border hairline bg-surface p-1">
+            {([["grid", "Editorial grid", "Grid", LayoutGrid], ["index", "Technical index", "Index", List]] as const).map(([v, label, short, Icon]) => (
+              <button key={v} type="button" role="radio" aria-checked={view === v} aria-label={label} onClick={() => setView(v)}
+                className={cn("inline-flex h-9 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full px-4 text-sm transition-colors", view === v ? "bg-ink text-paper" : "text-muted hover:text-ink")}>
+                <Icon className="size-4 shrink-0" aria-hidden /><span className="hidden sm:inline">{label}</span><span className="sm:hidden" aria-hidden>{short}</span>
               </button>
             ))}
           </div>

@@ -83,10 +83,10 @@ export const catalog: Project[] = [
   }),
   entry({
     slug: "prepx", name: "SmartPrepX",
-    tagline: "Exam preparation with MCQs, past papers and practice tests.",
-    summary: "A Laravel platform for MCQs, past papers and practice assessments, with OpenAI and Firebase named in its configuration.",
-    categories: ["Web", "Backend", "AI"], technologies: ["Laravel", "PHP", "Vite", "Tailwind CSS", "OpenAI", "Firebase"],
-    repos: ["prepx-private-1"], fromProfile: true, pending: ["Screenshots", "Store / live link", "How OpenAI is used"],
+    tagline: "An exam-preparation app with MCQs, past papers and practice tests.",
+    summary: "A published mobile app for MCQs, past papers and practice assessments, powered by a Laravel backend with OpenAI and Firebase named in its configuration.",
+    categories: ["Mobile", "Backend", "AI"], technologies: ["Laravel", "PHP", "Firebase", "OpenAI", "Vite", "Tailwind CSS"],
+    repos: ["prepx-private-1"], fromProfile: true, pending: ["Screenshots", "Store link", "Mobile client repository", "How OpenAI is used"],
   }),
   entry({
     slug: "wecare", name: "WeCare",
@@ -140,7 +140,7 @@ export const catalog: Project[] = [
     repos: ["flames-and-shakes-private-1", "flames-and-shakes-private-2"], fromProfile: true,
   }),
   entry({
-    slug: "rayvon-scents", name: "Rayvon Scents", tagline: "An e-commerce store for fragrances.",
+    slug: "rayvon-scents", published: false, name: "Rayvon Scents", tagline: "An e-commerce store for fragrances.",
     summary: "A Laravel storefront with Alpine.js and Tailwind, using Pusher for real-time events.",
     categories: ["Web", "Backend"], technologies: ["Laravel", "Alpine.js", "Tailwind CSS", "Pusher"], repos: ["rayvon-scents-private-1"],
   }),
@@ -150,12 +150,12 @@ export const catalog: Project[] = [
     categories: ["Web"], technologies: ["Next.js", "React", "TypeScript", "Three.js", "GSAP", "Tailwind CSS"], repos: ["arkaf-edge-private-1"],
   }),
   entry({
-    slug: "blogbyasad", name: "BlogByAsad", tagline: "A Laravel blog and portfolio ecosystem.",
+    slug: "blogbyasad", published: false, name: "BlogByAsad", tagline: "A Laravel blog and portfolio ecosystem.",
     summary: "A Laravel blog with role-based administration (Spatie Permission), Alpine.js and Tailwind.",
     categories: ["Web", "Backend"], technologies: ["Laravel", "Spatie Permission", "Alpine.js", "Tailwind CSS", "Vite"], repos: ["blogbyasad-private-1"],
   }),
   entry({
-    slug: "codebyasad", name: "CodeByAsad", tagline: "This portfolio — and the Laravel site before it.",
+    slug: "codebyasad", published: false, name: "CodeByAsad", tagline: "This portfolio — and the Laravel site before it.",
     summary: "The current site is a statically exported Next.js portfolio with GSAP and a React Three Fiber hero; the previous version was a Laravel application.",
     categories: ["Web"], technologies: ["Next.js", "TypeScript", "GSAP", "Three.js", "Tailwind CSS", "Laravel"],
     repos: ["codebyasad-v2", "codebyasad"], live: "https://codebyasad.com", status: "Live", fromProfile: true,
