@@ -3,20 +3,20 @@
 _Generated from `src/content/projects` by `npm run docs:inventory` — do not edit by hand._
 _Evidence reviewed: 2026-11-08._
 
-**42 published projects** reconciled from 95 repositories plus the GitHub profile README.
-The brief targets 41; the evidence supports 42 distinct projects — see “Reconciliation” in REPOSITORY-AUDIT.md.
+**39 published projects** reconciled from 95 repositories plus the GitHub profile README.
+The brief targets 41; the evidence supports 39 distinct projects — see “Reconciliation” in REPOSITORY-AUDIT.md.
 
 | Tier | Count |
 |---|---|
 | Flagship | 3 |
 | Featured | 5 |
-| Catalogue | 34 |
+| Catalogue | 31 |
 
 | Category | Projects |
 |---|---|
 | SaaS | 6 |
 | Web | 16 |
-| Mobile | 27 |
+| Mobile | 24 |
 | Backend | 12 |
 | AI | 7 |
 | Enterprise | 7 |
@@ -50,22 +50,19 @@ The brief targets 41; the evidence supports 42 distinct projects — see “Reco
 | 21 | [Blueprint Health & Fitness](https://codebyasad.com/work/blueprint-health-fitness/) | catalog | Mobile | Flutter, GetX | — | original | 🔒 private | — | 1 | verified / partial | High | Store link |
 | 22 | [QuickSaver](https://codebyasad.com/work/quicksaver/) | catalog | Mobile, Tools | Flutter, GetX | — | original | 🔒 private | — | 0 | verified / partial | High | Store link |
 | 23 | [Top Coaches](https://codebyasad.com/work/top-coaches/) | catalog | Mobile | Flutter | — | original | 🔒 private | — | 0 | reported / minimal | High | Source code; Description; Store link |
-| 24 | [Mood Panda](https://codebyasad.com/work/mood-panda/) | catalog | Mobile | Flutter, Firebase, Cloud Firestore, FCM | — | original | [mood_panda](https://github.com/Asad2512-dev/mood_panda), 🔒 private | — | 0 | verified / partial | High | Screenshots |
-| 25 | [Jordanian Sports](https://codebyasad.com/work/jordanian-sports/) | catalog | Mobile | Flutter, GetX | — | original | 🔒 private | — | 1 | verified / partial | High | — |
-| 26 | [Odyssey Hub](https://codebyasad.com/work/odyssey-hub/) | catalog | Mobile | Flutter, GetX, Dio | — | original | [odyssy_hub](https://github.com/Asad2512-dev/odyssy_hub) | — | 0 | verified / partial | High | Product description; Screenshots |
-| 27 | [Football App](https://codebyasad.com/work/football-app/) | catalog | Mobile | Flutter, GetX, Firebase Auth, Cloud Firestore | — | original | 🔒 private | — | 0 | verified / partial | High | Screenshots |
-| 28 | [Safe City](https://codebyasad.com/work/safe-city/) | catalog | Mobile | Flutter, GetX, Firebase Auth, Cloud Firestore, FCM, Google Maps | — | original | 🔒 private | — | 0 | verified / partial | High | Screenshots |
-| 29 | [Budget Mart](https://codebyasad.com/work/budget-mart/) | catalog | Mobile | Flutter, GetX, Firebase Auth, Cloud Firestore, FCM, Google Maps | — | original | 🔒 private | — | 0 | verified / partial | High | Screenshots |
-| 30 | [SoftHeal](https://codebyasad.com/work/softheal/) | catalog | Mobile | Flutter, GetX, Firebase, FCM, Hive, SQLite, Dio | — | original | 🔒 private | — | 0 | verified / partial | High | Screenshots |
-| 31 | [Smart Splitter](https://codebyasad.com/work/smart-splitter/) | catalog | Mobile | Flutter, GetX | — | original | 🔒 private | — | 0 | verified / partial | High | Screenshots |
-| 32 | [Student Hostel Manager](https://codebyasad.com/work/student-boys-hostel/) | catalog | Mobile, Enterprise | Flutter | — | original | 🔒 private | — | 0 | verified / partial | High | Screenshots |
-| 33 | [SugarWell](https://codebyasad.com/work/sugarwell/) | catalog | Mobile | Flutter, GetX, Provider, go_router, Firebase, FCM, Hive, Dio | — | original | 🔒 private | — | 0 | verified / partial | High | Screenshots |
-| 34 | [Askio AI — University App](https://codebyasad.com/work/askio-ai/) | featured | Mobile, AI | Flutter, GetX | — | academic | 🔒 private, 🔒 private | — | 0 | verified / partial | Medium | Which AI model/provider powers chat; Whether the second NUML repository is part of this project |
-| 35 | [Clinic Token System](https://codebyasad.com/work/clinic-token/) | catalog | Mobile, Enterprise, Tools | Flutter (desktop), GetX, SQLite | — | original | 🔒 private | — | 1 | verified / partial | High | — |
-| 36 | [GreenGuide](https://codebyasad.com/work/greenguide/) | catalog | Mobile, AI, Backend | Flutter, GetX, Firebase, Gemini, Node.js, Express, MySQL | — | original | [GreenGuide](https://github.com/Asad2512-dev/GreenGuide), 🔒 private | — | 1 | verified / partial | High | — |
-| 37 | [LoomByte](https://codebyasad.com/work/loombyte/) | catalog | Web | Next.js, TypeScript, GSAP, Three.js | Live | original | 🔒 private | https://loombyte.online | 1 | verified / minimal | High | Purpose / client |
-| 38 | [EIVA](https://codebyasad.com/work/eiva/) | catalog | Research, AI | Python, PyTorch, scikit-learn | Research | research | 🔒 private | — | 0 | verified / partial | High | Screenshots |
-| 39 | [RCR-DeepFake](https://codebyasad.com/work/rcr-deepfake/) | catalog | Research, AI | Python, PyTorch | Research | research | — | — | 0 | reported / minimal | Low — profile only | Repository or paper link |
-| 40 | [FreqKAN / FreqKANPP](https://codebyasad.com/work/freqkan/) | catalog | Research, AI | Python, PyTorch | Research | research | — | — | 0 | reported / minimal | Low — profile only | Repository or paper link |
-| 41 | [Electronic Voting Machine](https://codebyasad.com/work/electronic-voting-machine/) | catalog | Web, Backend | React, Node.js, Express, MongoDB, JWT | — | academic | — | — | 0 | reported / minimal | Low — profile only | Repository link |
-| 42 | [Supervisor Allocation System](https://codebyasad.com/work/supervisor-allocation/) | catalog | Web, Backend, Enterprise | Laravel, Blade, Tailwind CSS, Alpine.js, MySQL | — | academic | — | — | 0 | reported / minimal | Low — profile only | Repository link |
+| 24 | [Jordanian Sports](https://codebyasad.com/work/jordanian-sports/) | catalog | Mobile | Flutter, GetX | — | original | 🔒 private | — | 1 | verified / partial | High | — |
+| 25 | [Odyssey Hub](https://codebyasad.com/work/odyssey-hub/) | catalog | Mobile | Flutter, GetX, Dio | — | original | [odyssy_hub](https://github.com/Asad2512-dev/odyssy_hub) | — | 0 | verified / partial | High | Product description; Screenshots |
+| 26 | [Football App](https://codebyasad.com/work/football-app/) | catalog | Mobile | Flutter, GetX, Firebase Auth, Cloud Firestore | — | original | 🔒 private | — | 0 | verified / partial | High | Screenshots |
+| 27 | [Safe City](https://codebyasad.com/work/safe-city/) | catalog | Mobile | Flutter, GetX, Firebase Auth, Cloud Firestore, FCM, Google Maps | — | original | 🔒 private | — | 0 | verified / partial | High | Screenshots |
+| 28 | [Budget Mart](https://codebyasad.com/work/budget-mart/) | catalog | Mobile | Flutter, GetX, Firebase Auth, Cloud Firestore, FCM, Google Maps | — | original | 🔒 private | — | 0 | verified / partial | High | Screenshots |
+| 29 | [SoftHeal](https://codebyasad.com/work/softheal/) | catalog | Mobile | Flutter, GetX, Firebase, FCM, Hive, SQLite, Dio | — | original | 🔒 private | — | 0 | verified / partial | High | Screenshots |
+| 30 | [Smart Splitter](https://codebyasad.com/work/smart-splitter/) | catalog | Mobile | Flutter, GetX | — | original | 🔒 private | — | 0 | verified / partial | High | Screenshots |
+| 31 | [Askio AI — University App](https://codebyasad.com/work/askio-ai/) | featured | Mobile, AI | Flutter, GetX | — | academic | 🔒 private, 🔒 private | — | 0 | verified / partial | Medium | Which AI model/provider powers chat; Whether the second NUML repository is part of this project |
+| 32 | [Clinic Token System](https://codebyasad.com/work/clinic-token/) | catalog | Mobile, Enterprise, Tools | Flutter (desktop), GetX, SQLite | — | original | 🔒 private | — | 1 | verified / partial | High | — |
+| 33 | [GreenGuide](https://codebyasad.com/work/greenguide/) | catalog | Mobile, AI, Backend | Flutter, GetX, Firebase, Gemini, Node.js, Express, MySQL | — | original | [GreenGuide](https://github.com/Asad2512-dev/GreenGuide), 🔒 private | — | 1 | verified / partial | High | — |
+| 34 | [LoomByte](https://codebyasad.com/work/loombyte/) | catalog | Web | Next.js, TypeScript, GSAP, Three.js | Live | original | 🔒 private | https://loombyte.online | 1 | verified / minimal | High | Purpose / client |
+| 35 | [EIVA](https://codebyasad.com/work/eiva/) | catalog | Research, AI | Python, PyTorch, scikit-learn | Research | research | 🔒 private | — | 0 | verified / partial | High | Screenshots |
+| 36 | [RCR-DeepFake](https://codebyasad.com/work/rcr-deepfake/) | catalog | Research, AI | Python, PyTorch | Research | research | — | — | 0 | reported / minimal | Low — profile only | Repository or paper link |
+| 37 | [FreqKAN / FreqKANPP](https://codebyasad.com/work/freqkan/) | catalog | Research, AI | Python, PyTorch | Research | research | — | — | 0 | reported / minimal | Low — profile only | Repository or paper link |
+| 38 | [Electronic Voting Machine](https://codebyasad.com/work/electronic-voting-machine/) | catalog | Web, Backend | React, Node.js, Express, MongoDB, JWT | — | academic | — | — | 0 | reported / minimal | Low — profile only | Repository link |
+| 39 | [Supervisor Allocation System](https://codebyasad.com/work/supervisor-allocation/) | catalog | Web, Backend, Enterprise | Laravel, Blade, Tailwind CSS, Alpine.js, MySQL | — | academic | — | — | 0 | reported / minimal | Low — profile only | Repository link |

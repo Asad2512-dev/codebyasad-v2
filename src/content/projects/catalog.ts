@@ -247,7 +247,7 @@ export const catalog: Project[] = [
     verification: "reported", completeness: "minimal", pending: ["Source code", "Description", "Store link"],
   }),
   entry({
-    slug: "mood-panda", name: "Mood Panda", tagline: "A mood app, rebuilt in a second version.",
+    slug: "mood-panda", published: false, name: "Mood Panda", tagline: "A mood app, rebuilt in a second version.",
     summary: "A Flutter app in two generations; the second version adds Firebase data and push notifications.",
     categories: ["Mobile"], technologies: ["Flutter", "Firebase", "Cloud Firestore", "FCM"], repos: ["mood_panda", "mood-panda-private-1"],
   }),
@@ -291,12 +291,12 @@ export const catalog: Project[] = [
     categories: ["Mobile"], technologies: ["Flutter", "GetX"], repos: ["smart-splitter-private-1"],
   }),
   entry({
-    slug: "student-boys-hostel", name: "Student Hostel Manager", tagline: "Rooms, students, rent and inspections for hostel owners.",
+    slug: "student-boys-hostel", published: false, name: "Student Hostel Manager", tagline: "Rooms, students, rent and inspections for hostel owners.",
     summary: "A Flutter management app for hostels: rooms, students, guests, rent, inspections, reports and a lock screen.",
     categories: ["Mobile", "Enterprise"], technologies: ["Flutter"], repos: ["student-boys-hostel-private-1"],
   }),
   entry({
-    slug: "sugarwell", name: "SugarWell", tagline: "Diabetes care for patients, with an admin side.",
+    slug: "sugarwell", published: false, name: "SugarWell", tagline: "Diabetes care for patients, with an admin side.",
     summary: "A Flutter app with patient and admin roles, Firebase and FCM, Hive local storage and go_router navigation.",
     categories: ["Mobile"], technologies: ["Flutter", "GetX", "Provider", "go_router", "Firebase", "FCM", "Hive", "Dio"], repos: ["sugarwell-private-1"],
   }),
