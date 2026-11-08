@@ -38,6 +38,8 @@ Check locally first: `npm run preview` → http://localhost:4173 (serves `out/` 
 - [ ] `https://codebyasad.com/`, `/work/`, `/work/menuwave/`, `/work/?category=Mobile`, `/resume/` load directly (paste into a new tab) and on refresh.
 - [ ] `/work/menuwave` (no trailing slash) 301-redirects to `/work/menuwave/`.
 - [ ] `.woff2` fonts are served as `font/woff2` (DevTools → Network).
+- [ ] On a phone: open the menu, rotate to landscape and back, use the browser Back button — the menu closes and the page scrolls normally.
+- [ ] On an iPhone with a notch: header and menu clear the status bar; footer clears the home indicator.
 - [ ] `http://` and `www.` redirect to `https://codebyasad.com/`.
 - [ ] `/does-not-exist` shows the custom 404.
 - [ ] `/sitemap.xml` and `/robots.txt` load; submit the sitemap in Google Search Console.

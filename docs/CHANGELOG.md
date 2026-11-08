@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-08 — Phase 3: mobile-first experience
+- Mobile audit across 10 viewports × 60 routes (docs/MOBILE-AUDIT.md) with a reusable `npm run audit:mobile`.
+- Mobile hero: natural height, CTAs on the first screen at every viewport, framed 3D stage with layer legend, compact
+  landscape layout, scroll cue; desktop pinned hero unchanged.
+- New mobile navigation: full-screen GSAP overlay, focus trap, Escape/restore, inert background, scroll lock, Home + active route, safe areas.
+- 44 px touch targets, ≥ 16 px body text on phones, tighter section rhythm, safe-area insets, edge-faded chip scrollers.
+- Phone architecture diagrams as readable HTML stacks; responsive GSAP via `gsap.matchMedia()`.
+- QA: menu and back-navigation tests added; desktop regression checked; fixed 1024 px hero overlap.
+
 ## 2026-11-08 — Current role: Buildexa Technologies
 - Added Senior Full-Stack Engineer & Senior Product Designer at Buildexa Technologies (Aug 2026 – present, remote) as the first, current role; previous roles unchanged.
 - New positioning “Design × Engineering”: hero “I design the experience. I engineer the product.”, Discover → Design → Architect → Build → Deploy → Improve pipeline, Product Design expertise group.

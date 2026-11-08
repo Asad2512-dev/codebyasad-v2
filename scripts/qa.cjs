@@ -81,6 +81,33 @@ const routes = [...sitemap.matchAll(/<loc>https:\/\/codebyasad\.com(\/[^<]*)<\/l
   if (!panel.includes("Integrations")) fail("explorer panel did not update");
   console.log("architecture explorer: keyboard OK");
 
+  // Filter state survives project → back navigation
+  await page.goto(base + "/work/?category=Mobile", { waitUntil: "networkidle" }); await page.waitForTimeout(300);
+  const before = await count();
+  await page.locator('[data-view-panel="grid"] li:not([hidden]) h3 a').first().click(); await page.waitForURL(/\/work\/[a-z0-9-]+\/$/);
+  await page.goBack(); await page.waitForTimeout(600);
+  if (!page.url().includes("category=Mobile") || (await count()) !== before) fail("filter state lost after back navigation", page.url());
+  console.log("catalogue state after back: OK");
+
+  // Mobile menu: focus in, trap, Escape, restore, inert background, scroll lock
+  const m = await (await b.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true })).newPage();
+  await m.goto(base + "/experience/", { waitUntil: "networkidle" });
+  const trigger = m.locator("button[aria-controls=mobile-menu]");
+  await trigger.click(); await m.waitForTimeout(900);
+  const st = await m.evaluate(() => ({ expanded: document.querySelector("button[aria-controls=mobile-menu]").getAttribute("aria-expanded"), inMenu: !!document.activeElement.closest("#mobile-menu"), inert: document.getElementById("main").hasAttribute("inert"), locked: document.documentElement.style.overflow === "hidden", current: document.querySelector("#mobile-menu [aria-current=page]")?.textContent, links: document.querySelectorAll("#mobile-menu a").length }));
+  if (st.expanded !== "true" || !st.inMenu || !st.inert || !st.locked) fail("menu open state", JSON.stringify(st));
+  if (!/Experience/.test(st.current || "")) fail("menu active route", st.current);
+  for (let i = 0; i < st.links + 3; i++) await m.keyboard.press("Tab");
+  if (!(await m.evaluate(() => !!document.activeElement.closest("#mobile-menu, header")))) fail("menu focus trap");
+  await m.keyboard.press("Escape"); await m.waitForTimeout(700);
+  const after = await m.evaluate(() => ({ expanded: document.querySelector("button[aria-controls=mobile-menu]").getAttribute("aria-expanded"), focusBack: document.activeElement === document.querySelector("button[aria-controls=mobile-menu]"), inert: document.getElementById("main").hasAttribute("inert"), vis: getComputedStyle(document.getElementById("mobile-menu")).visibility }));
+  if (after.expanded !== "false" || !after.focusBack || after.inert || after.vis !== "hidden") fail("menu close/restore", JSON.stringify(after));
+  await trigger.click(); await m.waitForTimeout(900); await m.locator("#mobile-menu a", { hasText: "Work" }).first().click(); await m.waitForURL(/\/work\/$/); await m.waitForTimeout(700);
+  if ((await m.evaluate(() => getComputedStyle(document.getElementById("mobile-menu")).visibility)) !== "hidden") fail("menu stays open after navigation");
+  await m.goBack(); await m.waitForTimeout(700);
+  if ((await m.evaluate(() => document.querySelector("button[aria-controls=mobile-menu]").getAttribute("aria-expanded"))) !== "false") fail("menu open after back navigation");
+  console.log("mobile menu: open/trap/escape/restore/navigate/back OK");
+
   await b.close();
   console.log(problems ? `${problems} problem(s)` : "QA: all checks passed");
   process.exit(problems ? 1 : 0);

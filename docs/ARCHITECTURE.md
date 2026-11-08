@@ -31,6 +31,8 @@ The portfolio of Muhammad Asad Ullah — a statically exported **Next.js 15 (App
 
 **Motion.** `Fx` creates a section's ScrollTriggers only when the section nears the viewport, inside `gsap.context()` (reverted on unmount). `RevealRoot` uses IntersectionObserver and never hides content already on screen. Hero text animates in CSS so it paints before JavaScript. Reduced motion disables Lenis, GSAP and WebGL.
 
+**Responsive composition.** The hero has two compositions over one markup: a pinned, scroll-scrubbed stage at ≥ 1024 px and a natural-height stacked layout below it, with `short:`/`shortp:` custom variants for short screens. `fx.ts` uses `gsap.matchMedia()` to run different timelines per range. The mobile menu is a dialog overlay rendered outside the header; its GSAP timeline is built on first open. See MOBILE-DESIGN-SYSTEM.md.
+
 **3D.** `Hero3D` shows an SVG of the five-layer stack immediately and loads `StackScene` (three + R3F) on first interaction or 9 s after load, on capable devices only, pausing off-screen and falling back on context loss.
 
 ## How to run
@@ -42,6 +44,7 @@ npm run build          # static export → out/
 npm run preview        # serve out/ like Hostinger (gzip + caching) on :4173
 npm run lint && npm run typecheck && npm test
 npm run qa             # Playwright QA (needs preview running)
+npm run audit:mobile   # mobile audit: 60 routes × 10 viewports + menu checks → audit-shots/
 npm run docs:inventory # regenerate PROJECT-INVENTORY.md and REPOSITORY-AUDIT.md
 ```
 
