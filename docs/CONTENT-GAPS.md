@@ -1,26 +1,38 @@
 # Content gaps — needs confirmation from Asad
 
-Sources audited: `github.com/Asad2512-dev` profile README, the `unisecure` repository (architecture docs, composer.json, .env.example), the previous `codebyasad` Laravel site repository, and the repository list. No CV, screenshots or private project documentation were available.
+Updated after the full 95-repository audit (2026-11-08). Private repository names are kept out of git — see `private/` locally. Nothing below is shown on the site as fact;
+each item is either omitted or appears in a case study's Evidence section as limited evidence.
+Per-project gaps are also in `pending` on each entry and in the “Missing” column of PROJECT-INVENTORY.md.
 
-Everything below is either hidden or labelled **Pending confirmation** / **Self-reported** on the site.
+## Decisions only you can make
 
-## Priority 1 — before launch
-- [ ] **Résumé PDF** → `public/resume/Muhammad-Asad-Ullah-Resume.pdf` (the HTML résumé works without it).
-- [ ] **Real screenshots** for MenuWave, TotalCashPro, ExamCell, UniSecure (desktop + mobile, 2–6 each) → `public/images/projects/<slug>/`.
-- [ ] **Technology stacks** for MenuWave, TotalCashPro, ExamCell, BiteRush.
-- [ ] **Your exact role** on MenuWave and TotalCashPro (sole engineer? lead? with a team?) and whether they are your products or client products.
-- [ ] **ExamCell**: which steps are AI-assisted and how (model/provider, what it does); live/demo link if any.
-- [ ] **Availability**: remote only, relocation, or both (`profile.availability`).
+1. **41 vs 55 projects.** The evidence supports 55 distinct projects. To publish exactly 41, set
+   `published: false` on 14 entries in `src/content/projects/catalog.ts`. Reasonable candidates (thinnest evidence):
+   Muatabarea, Cypher, LoomByte, Top Coaches, Football App, Smart Splitter, Mood Panda, Budget Mart, Safe City,
+   Student Hostel Manager, Rayvon Scents, Zawaaral 3PL, Pak Enterprises Tiles, Dr. Farhan Siddique.
+   Or tell me which projects you consider one product and I will merge them.
+2. **Six unpublished repositories** (classified `unpublished` in the repository map; two are private and
+   listed under aliases) — publish or keep hidden? Public ones: chatie_chat_app, stock-management-, tasks, session_buddy.
+3. **Third-party bases.** BiteRush (6amMart) and GoBirr (eDemand) are shown as “customised”. If you built
+   significant features on top, list them so the case study can say what is yours.
+   Two private repositories are excluded as not original work (see the local full audit) — confirm.
+4. **Ownership split** on MenuWave and TotalCashPro: sole engineer, lead, or part of a team (Buildexa)?
 
-## Priority 2 — strengthens credibility
-- [ ] Hosting / deployment details for MenuWave and TotalCashPro (server, database, CI/CD).
-- [ ] Measurable outcomes (restaurants onboarded, orders processed, uptime, etc.) — only real numbers.
-- [ ] App Store / Play Store links for the 11 published apps (turns the stat from *Self-reported* into *Verified*).
-- [ ] Evidence for the Cyphersol figures (25% stability, 30% faster delivery) or keep them labelled self-reported.
-- [ ] Competition certificate/link (MNS University, 2025) and which project won (Voice Library?).
-- [ ] Repository descriptions/languages for `smart-log-analyzer` and `autocategory-ai-platform` (GitHub API access wasn't available during the build).
-- [ ] Links to research outputs (paper, preprint or repo) for RCR-DeepFake and FreqKAN.
-- [ ] Professional email on the domain (e.g. `hello@codebyasad.com`) if preferred over Gmail.
+## Flagship gaps
 
-## Already verified and used
-Name, location, GitHub, LinkedIn, email, roles and dates at The Code Kraft / Cyphersol / freelance, NUML 2022–2026, first place 2025, skills table, project inventory, UniSecure architecture (Laravel 13, PHP 8.3, MySQL, Sanctum, Blade/Tailwind/Alpine, Flutter, API v1 envelope, request IDs, services/repositories/policies, provider-independent face verification, feature-flagged NFC, DB queue), ClubSync stack and repository, live URLs of the web properties.
+- **ExamCell** — its repository is empty. Push the code, or confirm stack, AI features and a demo link.
+- **MenuWave / TotalCashPro** — screenshots (desktop + POS/kitchen/signage devices), measured production outcomes.
+
+## Evidence still missing
+
+- **Résumé PDF** → `public/resume/Muhammad-Asad-Ullah-Resume.pdf` (the HTML résumé works without it).
+- **Screenshots** for any project → `public/images/projects/<slug>/`, then add to `screenshots` in its entry.
+- **Store links** for published apps: GoBirr, Beyond Today, Lite Nurse Clinic, Blueprint, Online Barber,
+  QuickSaver, Top Coaches, SmartPrepX; and the apps with no repository: Smart Cubz, Urdu Poetry.
+- **Research outputs** (paper, preprint or repo) for RCR-DeepFake, FreqKAN and EIVA.
+- **Repositories** for EVM, Supervisor Allocation, Pak Enterprises Tiles, Dr. Farhan Siddique.
+- **Askio AI** — which model powers the chat; is the second NUML app repository part of it?
+- **Voice Library** — was it the 2025 MNS University competition winner?
+- **Cyphersol figures** (25% stability, 30% faster delivery) — evidence, or keep labelled self-reported.
+- **Availability** — remote only, or relocation too (`profile.availability`).
+- Optional: a domain email (e.g. hello@codebyasad.com) instead of Gmail.

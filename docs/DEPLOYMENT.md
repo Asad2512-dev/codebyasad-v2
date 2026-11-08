@@ -9,7 +9,7 @@ npm ci
 npm run build          # outputs ./out (includes .htaccess, sitemap.xml, robots.txt, 404.html)
 ```
 
-Check locally first: `npm run preview` → http://localhost:4173 and click through.
+Check locally first: `npm run preview` → http://localhost:4173 (serves `out/` with gzip and cache headers like the bundled `.htaccess`) and click through. `npm run qa` runs the automated route, link and interaction checks against it.
 
 ## 2. Upload
 
@@ -35,7 +35,9 @@ Check locally first: `npm run preview` → http://localhost:4173 and click throu
 - Long-term immutable caching for hashed assets, no-cache for HTML, gzip/deflate compression, basic security headers.
 
 ## 5. Verify production
-- [ ] `https://codebyasad.com/`, `/work/`, `/work/menuwave/`, `/resume/` load directly (paste into a new tab) and on refresh.
+- [ ] `https://codebyasad.com/`, `/work/`, `/work/menuwave/`, `/work/?category=Mobile`, `/resume/` load directly (paste into a new tab) and on refresh.
+- [ ] `/work/menuwave` (no trailing slash) 301-redirects to `/work/menuwave/`.
+- [ ] `.woff2` fonts are served as `font/woff2` (DevTools → Network).
 - [ ] `http://` and `www.` redirect to `https://codebyasad.com/`.
 - [ ] `/does-not-exist` shows the custom 404.
 - [ ] `/sitemap.xml` and `/robots.txt` load; submit the sitemap in Google Search Console.

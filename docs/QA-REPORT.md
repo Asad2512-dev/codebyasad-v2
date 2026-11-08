@@ -1,69 +1,72 @@
 # QA report
 
-Date: 2026-11-08 · Build: Next.js 15.5 static export (22 HTML pages incl. 9 case studies, sitemap, robots, 404).
+Date: 2026-11-08 · Build: Next.js 15.5 static export — 68 HTML pages (55 project pages, 8 site pages, 404, sitemap, robots).
 
 ## Automated gates — all passing
+
 | Check | Result |
 |---|---|
-| `next build` (static export) | ✅ 22/22 pages |
-| Reduced motion (Playwright `reducedMotion: reduce`) | ✅ no WebGL/Lenis, nothing hidden, hero 1 viewport tall |
-| ESLint (next/core-web-vitals + typescript) | ✅ 0 problems |
 | `tsc --noEmit` (strict) | ✅ |
-| Vitest content-integrity (8 tests) | ✅ |
-| Playwright route sweep — 17 routes × 8 widths (320, 375, 390, 430, 768, 1024, 1440, 1920) | ✅ no console errors, no failed/4xx requests, no horizontal overflow, exactly one `<h1>` per page |
+| ESLint (next/core-web-vitals + typescript) | ✅ 0 problems |
+| Vitest — 27 tests: content integrity (unique slugs and names, valid categories, required fields, flagship order, UniSecure not first and labelled In Development, related links, link formats, screenshots, provenance labels, planned-vs-implemented, data-derived count), repository map (95 repos, no orphans, agrees both ways), search and filters | ✅ 27/27 |
+| `next build` static export | ✅ 68/68 pages; `out/.htaccess` present; 55 `out/work/<slug>/index.html` |
+| Playwright sweep — all 63 sitemap routes × 8 widths (320, 375, 390, 430, 768, 1024, 1440, 1920) | ✅ no console errors, no failed/4xx requests, no overflow, exactly one `<h1>` |
+| Internal link check — every `href` on every route | ✅ 63 unique internal links, all 200 |
+| /work interactions — search, category filter, technology filter, view toggle, index row count, URL state restored from `?category=Mobile&view=index` | ✅ |
+| Architecture explorer — ArrowDown / End keys, roving tabindex, panel update | ✅ |
+| Reduced motion (Playwright `reducedMotion: reduce`) | ✅ no WebGL, no Lenis, nothing hidden, hero one viewport tall |
+| Keyboard — first Tab reaches “Skip to content” | ✅ |
 
-## Lighthouse 12 (mobile, devtools throttling: 4× CPU, slow 4G)
+## Lighthouse 12 — mobile, devtools throttling (4× CPU, slow 4G), two runs per page
 
-Measured against `scripts/serve-prod.cjs`, a local server that mirrors the bundled
-`.htaccess` (gzip, immutable caching for hashed assets). Three runs per page agreed within ±1.
+Measured against `npm run preview` (`scripts/serve-prod.cjs`: gzip and immutable caching like the bundled `.htaccess`).
 
 ```
-/                  perf:98 acce:100 best:100 seo:100 | LCP 1.7 s CLS 0 TBT 120 ms
-/about/            perf:99 acce:100 best:100 seo:100 | LCP 1.6 s CLS 0 TBT 90 ms
-/work/             perf:98 acce:100 best:100 seo:100 | LCP 1.6 s CLS 0 TBT 130 ms
-/work/menuwave/    perf:99 acce:100 best:100 seo:100 | LCP 1.6 s CLS 0 TBT 80 ms
-/work/unisecure/   perf:98 acce:100 best:100 seo:100 | LCP 1.6 s CLS 0 TBT 110 ms
-/experience/       perf:98 acce:98 best:100 seo:100 | LCP 1.6 s CLS 0 TBT 140 ms
-/expertise/        perf:99 acce:98 best:100 seo:100 | LCP 1.6 s CLS 0 TBT 90 ms
-/lab/              perf:99 acce:100 best:100 seo:100 | LCP 1.6 s CLS 0 TBT 90 ms
-/resume/           perf:99 acce:100 best:100 seo:100 | LCP 1.6 s CLS 0 TBT 80 ms
-/contact/          perf:98 acce:100 best:100 seo:100 | LCP 1.6 s CLS 0 TBT 120 ms
+/                      perf:97 acce:100 best:100 seo:100 | LCP 1.7 s | CLS 0 | TBT 130 ms | JS 433 KB | main 7.8 s
+/                      perf:98 acce:100 best:100 seo:100 | LCP 1.7 s | CLS 0 | TBT 110 ms | JS 433 KB | main 7.5 s
+/work/                 perf:98 acce:100 best:100 seo:100 | LCP 1.7 s | CLS 0 | TBT 100 ms | JS 186 KB | main 2.4 s
+/work/                 perf:97 acce:100 best:100 seo:100 | LCP 1.8 s | CLS 0 | TBT 140 ms | JS 186 KB | main 2.4 s
+/work/menuwave/        perf:99 acce:100 best:100 seo:100 | LCP 1.7 s | CLS 0 | TBT 80 ms | JS 186 KB | main 2.0 s
+/work/menuwave/        perf:98 acce:100 best:100 seo:100 | LCP 1.7 s | CLS 0 | TBT 110 ms | JS 186 KB | main 2.2 s
+/work/totalcashpro/    perf:98 acce:100 best:100 seo:100 | LCP 1.7 s | CLS 0 | TBT 120 ms | JS 186 KB | main 2.1 s
+/work/totalcashpro/    perf:98 acce:100 best:100 seo:100 | LCP 1.6 s | CLS 0 | TBT 100 ms | JS 186 KB | main 1.9 s
+/work/examcell/        perf:99 acce:100 best:100 seo:100 | LCP 1.6 s | CLS 0 | TBT 80 ms | JS 186 KB | main 1.9 s
+/work/examcell/        perf:99 acce:100 best:100 seo:100 | LCP 1.6 s | CLS 0 | TBT 100 ms | JS 186 KB | main 1.8 s
+/work/coresy/          perf:99 acce:100 best:100 seo:100 | LCP 1.6 s | CLS 0 | TBT 100 ms | JS 186 KB | main 1.7 s
+/work/coresy/          perf:99 acce:100 best:100 seo:100 | LCP 1.6 s | CLS 0 | TBT 110 ms | JS 186 KB | main 1.8 s
+/about/                perf:98 acce:100 best:100 seo:100 | LCP 1.6 s | CLS 0 | TBT 110 ms | JS 168 KB | main 1.6 s
+/about/                perf:98 acce:100 best:100 seo:100 | LCP 1.6 s | CLS 0 | TBT 120 ms | JS 168 KB | main 1.7 s
+/resume/               perf:99 acce:100 best:100 seo:100 | LCP 1.6 s | CLS 0 | TBT 90 ms | JS 167 KB | main 1.8 s
+/resume/               perf:99 acce:100 best:100 seo:100 | LCP 1.6 s | CLS 0 | TBT 90 ms | JS 167 KB | main 1.7 s
 ```
 
-- **Performance 98–99, Accessibility 100, Best Practices 100, SEO 100 on every page.**
-- **LCP 1.6–1.7 s, CLS 0, TBT 80–140 ms.**
-- Without compression (plain `python3 -m http.server`) the homepage still scores 93–94 (LCP 2.1 s).
+- **Performance 97–99, Accessibility 100, Best Practices 100, SEO 100** on every page measured.
+- **LCP 1.6–1.8 s · CLS 0 · TBT 80–140 ms.** INP can't be measured in the lab; TBT is the proxy.
 
-### What fixed the homepage (79 → 98)
-1. **Lazy scroll effects.** Section choreography moved out of client components into one
-   `<Fx name="…" />` island per section. Its ScrollTriggers are created only when the section
-   nears the viewport, each in its own idle task. Previously all of them measured the page
-   inside a single 444 ms post-hydration task.
-2. **Reveal system on IntersectionObserver.** No layout reads, no ScrollTriggers; this removed
-   ~200 ms of forced reflow.
-3. **Server components.** Hero, Identity, Stats, Selected Work, Expertise, Timeline and Contact
-   now render on the server, so there is less to hydrate.
-4. **No first-load layout pass.** Lenis starts in an idle task, and the route-change
-   `ScrollTrigger.refresh()` runs only on client-side navigation.
-5. **Fonts.** Geist and Geist Mono are subset to Latin and weights 400–600
-   (69 kB → 17 kB and 71 kB → 13.5 kB, `scripts/subset-fonts.sh`). The italic serif is no
-   longer preloaded. LCP now equals first paint.
-6. **No animation delay on the first hero text.**
+### Before → after
 
-## Manual / visual checks
-- Hero: CSS-only headline entrance; SVG stack shown immediately; WebGL fades in after first interaction; scroll separates layers and swings the camera; legend reveals. Verified at 1440×900 and 390×844 (lite tier).
-- Selected work stages: perspective panel settles flat, clip-path reveal, parallax numeral and floating module card.
-- Architecture explorer: tabs & layers operable by mouse, touch and keyboard (arrow keys, roving tabindex, `aria-selected`, `role=tabpanel`).
-- Mobile menu: full-screen, `aria-expanded`, Escape closes and returns focus, body scroll locked.
-- Reduced motion: Lenis, GSAP and WebGL disabled; hero not pinned; all content visible.
-- Print: `/resume/` prints without header/footer.
+| Page | Initial build | After perf pass | Phase 2 first measurement | Phase 2 final |
+|---|---|---|---|---|
+| Homepage | 79 (LCP 2.3 s, TBT 610 ms) | 98 | 96–98 | **97–98** (LCP 1.7 s, TBT 110–130 ms) |
+| /work | 94 (old 9-item list) | — | 83–84 (TBT 560–630 ms, a11y 96) | **97–98** (TBT 100–140 ms, a11y 100) |
+
+**What fixed /work:** the first catalogue hydrated 52 cards in both views as a client component. It now ships
+both views as server-rendered HTML; a small client island only toggles `hidden`, the search index is built
+lazily on first search, and there's no entrance animation on load. The a11y failure was low-contrast
+count numbers in the filter chips.
+
+**Homepage note:** the 433 KB of JavaScript and the ~7.5 s main-thread time include the deferred three.js
+bundle and WebGL shader compilation. Both happen after LCP, when Lighthouse's long observation window triggers
+the deferred load; blocking time stays at 110–130 ms. Lab numbers are not field Core Web Vitals — check
+PageSpeed Insights / Search Console after deployment.
 
 ## Not tested here
-- Real iOS Safari / Android Chrome hardware (emulated only).
-- Production Hostinger response headers (checklist in DEPLOYMENT.md).
-- Screen readers (VoiceOver/NVDA) — semantics reviewed in code only.
+- Real iOS Safari / Android hardware (emulated widths and an iPhone 13 profile only).
+- Production Hostinger headers — checklist in DEPLOYMENT.md.
+- Screen readers (VoiceOver/NVDA) — semantics reviewed in code; roles and labels verified by Playwright selectors.
 
 ## Known limitations
-- Flagship case studies are intentionally thin where facts are missing — see CONTENT-GAPS.md.
-- No contact form (mailto only, by design — no backend on shared hosting).
-- GitHub data is curated statically; no build-time API integration (avoids tokens and rate limits).
+- No real product screenshots exist yet. Covers are original generative illustrations; flagships use a module map captioned “not a product screenshot”.
+- ExamCell's repository is empty, so its case study is profile-based and says so in its Evidence section.
+- Private repositories are cited but not linked; the Evidence section notes they're available on request.
+- The project count (55) differs from the brief (41) — see REPOSITORY-AUDIT.md.
