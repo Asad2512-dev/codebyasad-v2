@@ -38,7 +38,7 @@ export default function WorkPage() {
             {featuredProjects.map((p, i) => (
               <li key={p.slug}>
                 <Link href={`/work/${p.slug}/`} className="group relative flex h-full flex-col overflow-hidden rounded-[var(--radius-lg)] border hairline bg-paper transition-shadow duration-500 hover:shadow-lift">
-                  <ProjectMedia project={p} className="aspect-[16/9]" />
+                  <ProjectMedia project={p} className="aspect-[16/9]" priority />
                   <div className="flex flex-1 flex-col p-6">
                     <p className="flex items-center gap-3 font-mono text-[11px] text-accent">0{i + 1}{p.status && <StatusBadge status={p.status} />}</p>
                     <p className="mt-3 font-display text-4xl">{p.name}</p>

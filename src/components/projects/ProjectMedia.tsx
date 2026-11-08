@@ -88,13 +88,13 @@ function motif(p: Project) {
  * (planes = platforms, device = mobile, browser = web, graph = backend/tools, signal = AI/research).
  * Covers make no claim to be product UI. Add screenshots under public/images/projects/<slug>/.
  */
-export function ProjectMedia({ project, className }: { project: Project; className?: string }) {
+export function ProjectMedia({ project, className, priority = false }: { project: Project; className?: string; priority?: boolean }) {
   const shot = project.screenshots[0];
   if (shot) {
     return (
       <div className={cn("relative overflow-hidden bg-paper", className)}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={shot.src} alt={shot.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+        <img src={shot.src} alt={shot.alt} loading={priority ? "eager" : "lazy"} decoding="async" fetchPriority={priority ? "high" : undefined} className="h-full w-full object-cover" />
       </div>
     );
   }

@@ -52,7 +52,7 @@ export function CaseStudy({ project: p, next, related }: { project: Project; nex
             </div>
           </div>
           <div className="lg:col-span-6">
-            {p.modules?.length && p.tier !== "catalog" ? <ModuleMap project={p} /> : <ProjectMedia project={p} className="aspect-[16/10] rounded-[var(--radius-lg)] border hairline shadow-lift" />}
+            {p.modules?.length && p.tier !== "catalog" ? <ModuleMap project={p} priority /> : <ProjectMedia project={p} className="aspect-[16/10] rounded-[var(--radius-lg)] border hairline shadow-lift" priority />}
           </div>
         </div>
         <div className="container-x">

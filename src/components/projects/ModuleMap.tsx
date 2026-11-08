@@ -6,11 +6,11 @@ import { cn } from "@/lib/utils";
  * it can never be mistaken for a real screenshot. Replace with real screenshots
  * by adding them to project.screenshots.
  */
-export function ModuleMap({ project, className }: { project: Project; className?: string }) {
+export function ModuleMap({ project, className, priority = false }: { project: Project; className?: string; priority?: boolean }) {
   const shot = project.screenshots[0];
   if (shot) {
     // eslint-disable-next-line @next/next/no-img-element
-    return <img src={shot.src} alt={shot.alt} className={cn("w-full rounded-[var(--radius-lg)] border hairline shadow-lift", className)} loading="lazy" />;
+    return <img src={shot.src} alt={shot.alt} className={cn("w-full rounded-[var(--radius-lg)] border hairline shadow-lift", className)} loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : undefined} />;
   }
   const mods = (project.modules ?? []).slice(0, 6);
   return (

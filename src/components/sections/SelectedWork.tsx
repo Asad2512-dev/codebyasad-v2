@@ -26,7 +26,7 @@ export function SelectedWork() {
               <div className="lg:col-span-7" style={{ perspective: "1400px" }}>
                 <div data-visual className="relative rounded-[var(--radius-lg)] bg-paper p-5 sm:p-10 md:p-14">
                   <span data-index aria-hidden className="pointer-events-none absolute top-2 right-5 font-display text-[clamp(4.5rem,10vw,9rem)] leading-none text-line select-none">{num}</span>
-                  <ModuleMap project={p} className="relative" />
+                  <ModuleMap project={p} className="relative" priority={i === 0} />
                 </div>
               </div>
               <div className="lg:col-span-5">
