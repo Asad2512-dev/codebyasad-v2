@@ -17,7 +17,13 @@ export const metadata: Metadata = {
   alternates: { canonical: site.url + "/" },
   openGraph: { type: "website", url: site.url, title: site.title, description: site.description, siteName: site.name, locale: site.locale, images: ["/og.png"] },
   twitter: { card: "summary_large_image", title: site.title, description: site.description, images: ["/og.png"] },
-  icons: { icon: "/favicon.svg" },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/brand/asad-icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: "/brand/asad-icon.png",
+  },
 };
 
 export const viewport: Viewport = { themeColor: colors.paper, width: "device-width", initialScale: 1, viewportFit: "cover" };

@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { primaryNav, ctaNav, mobileNav } from "@/config/navigation";
 import { profile } from "@/content/profile";
+import { BrandLogo } from "@/components/brand/BrandLogo";
 import { cn } from "@/lib/utils";
 import { gsap, prefersReducedMotion } from "@/lib/gsap";
 
@@ -113,10 +114,8 @@ export function Header() {
       )}
     >
       <div className="container-x relative z-20 flex h-14 items-center justify-between md:h-20">
-        <Link href="/" className="-ml-2 flex min-h-11 items-center gap-2.5 px-2" aria-label={`${profile.name} — home`}>
-          <span aria-hidden className="grid size-8 place-items-center rounded-full bg-ink font-display text-[15px] leading-none text-paper lg:hidden">A</span>
-          <span className="font-display text-[1.35rem] leading-none tracking-tight md:text-2xl">Asad Ullah</span>
-          <span className="hidden font-mono text-[10px] tracking-widest text-muted uppercase xl:inline">/ Design × Engineering</span>
+        <Link href="/" className="-ml-1 flex min-h-11 items-center px-2 py-1" aria-label={`${profile.name} — home`}>
+          <BrandLogo lockupClassName="h-8 md:h-9" markClassName="size-8" />
         </Link>
 
         <nav aria-label="Primary" className="hidden lg:block">

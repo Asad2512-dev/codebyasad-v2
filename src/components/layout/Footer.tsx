@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/brand/BrandLogo";
 import { primaryNav, ctaNav } from "@/config/navigation";
 import { profile } from "@/content/profile";
 import { site } from "@/config/site";
@@ -8,7 +9,8 @@ export function Footer() {
     <footer className="border-t hairline bg-paper">
       <div className="container-x grid gap-10 py-14 md:grid-cols-[2fr_1fr_1fr]">
         <div>
-          <p className="font-display text-3xl">{profile.name}</p>
+          <BrandLogo className="mb-4" markClassName="size-10 md:hidden" lockupClassName="h-10 max-w-[min(100%,18rem)] md:max-w-none" />
+          <p className="font-display text-3xl md:sr-only">{profile.name}</p>
           <p className="mt-2 max-w-sm text-base text-muted lg:text-sm">{profile.role} · {profile.location}</p>
         </div>
         <nav aria-label="Footer">
