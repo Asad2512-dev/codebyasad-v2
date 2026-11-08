@@ -1,47 +1,20 @@
-"use client";
-import { useRef } from "react";
+import { Fx } from "@/components/animation/Fx";
 import { profile } from "@/content/profile";
 import { Button } from "@/components/ui/Button";
 import { Hero3D } from "@/components/three/Hero3D";
-import { heroState, LAYERS } from "@/components/three/progress";
-import { useGsap } from "@/hooks/useGsap";
-import { gsap } from "@/lib/gsap";
-import { duration, ease } from "@/config/motion";
+import { LAYERS } from "@/components/three/progress";
 
 export function Hero() {
-  const root = useRef<HTMLElement>(null);
   const { hero } = profile;
 
-  useGsap(root, () => {
-    // Entrance — masked headline, then supporting copy
-    const tl = gsap.timeline({ defaults: { ease: ease.expo } });
-    // Headline lines animate in pure CSS (.hero-line) so they paint before hydration (LCP).
-    // Copy fades are CSS (.hero-fade) for the same reason; GSAP only adds the stage.
-    tl.from("[data-hero-stage]", { opacity: 0, scale: 0.96, duration: duration.cinematic }, 0.2);
-
-    // Scroll choreography: progress drives the 3D stack; copy steps aside; layer legend lights up.
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: root.current,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 0.6,
-        onUpdate: (s) => { heroState.progress = s.progress; },
-      },
-    })
-      .to("[data-hero-copy]", { opacity: 0, y: -60, ease: "none", duration: 0.35 }, 0.1)
-      .fromTo("[data-hero-legend]", { opacity: 0 }, { opacity: 1, duration: 0.15 }, 0.25)
-      .fromTo("[data-legend-item]", { opacity: 0.25, x: -8 }, { opacity: 1, x: 0, stagger: 0.08, duration: 0.12 }, 0.3);
-
-    return () => { heroState.progress = 0; };
-  });
 
   return (
-    <section ref={root} data-hero-root aria-labelledby="hero-title" className="relative h-[175svh] md:h-[230vh]">
+    <section data-hero-root aria-labelledby="hero-title" className="relative h-[175svh] md:h-[230vh]">
+      <Fx name="hero" eager />
       <div className="sticky top-0 h-svh min-h-[600px] overflow-hidden grid-paper">
         <div className="container-x relative grid h-full grid-rows-[auto_1fr] items-center pt-24 md:grid-cols-12 md:grid-rows-1 md:pt-20">
           <div data-hero-copy className="relative z-10 md:col-span-7">
-            <p className="hero-fade t-label mb-6" style={{ animationDelay: "0.35s" }} data-hero-fade>{hero.label}</p>
+            <p className="hero-fade t-label mb-6" style={{ animationDelay: "0s" }} data-hero-fade>{hero.label}</p>
             <h1 id="hero-title" className="t-hero">
               {hero.headline.map((line, i) => (
                 <span key={line} className="mask">

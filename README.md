@@ -10,7 +10,7 @@ React Three Fiber hero, built to deploy on Hostinger shared hosting.
 
 Next.js 15 (App Router, `output: 'export'`) · TypeScript · Tailwind CSS v4 · GSAP + ScrollTrigger (free core only) · Three.js + React Three Fiber · Lenis · Lucide · Vitest · Playwright (QA script)
 
-Fonts are self-hosted: **Geist / Geist Mono** (OFL, via the `geist` package) and **Instrument Serif** (OFL, `src/styles/*.woff2`). No external font requests.
+Fonts are self-hosted in `src/styles/` (all SIL OFL 1.1): **Geist / Geist Mono**, subset to Latin and weights 400–600 by `scripts/subset-fonts.sh` (17 kB + 13.5 kB), and **Instrument Serif**. No external font requests. If you add text in another script (e.g. Urdu), re-run the subset script with a wider range.
 
 ## Getting started
 
@@ -27,6 +27,7 @@ Quality gates:
 npm run lint && npm run typecheck && npm test   # ESLint, tsc, Vitest content-integrity tests
 npm run qa         # Playwright: every route × 8 widths — console errors, 4xx, overflow, single <h1>  (needs `npm run preview` running)
 npm run og         # regenerate public/og.png
+node scripts/serve-prod.cjs   # serve ./out with gzip + caching like Hostinger (port 4174) for Lighthouse
 ```
 
 ## Editing content (no component changes needed)
@@ -68,7 +69,7 @@ src/
     sections/              homepage sections 01–10 (reused by inner pages)
     projects/              CaseStudy template, ModuleMap, ArchitectureDiagram (SVG), ArchitectureExplorer, WorkIndex (filters)
     three/                 StackScene (R3F), Hero3D (loader / tiering / fallback), StackFallback (SVG)
-    animation/             SmoothScroll (Lenis ⇄ ScrollTrigger), RevealRoot (global reveal system)
+    animation/             Fx + fx.ts (lazy per-section GSAP), SmoothScroll (Lenis ⇄ ScrollTrigger), RevealRoot (IO reveals)
     ui/                    Button, Status, SectionHeader, PageHero, ErrorBoundary, PrintButton
   content/                 all editable copy & data
   config/                  theme, motion, navigation, site
@@ -87,7 +88,8 @@ Performance & resilience:
 - `prefers-reduced-motion`: no WebGL, no Lenis, no GSAP; the hero collapses to normal height.
 
 ### Animation rules
-- One `useGsap` hook wraps every timeline in `gsap.context()` and reverts it on unmount.
+- Sections are server components. Each has a tiny `<Fx name="…" />` client island; the timelines live in `components/animation/fx.ts`. A section's ScrollTriggers are created only when it nears the viewport, in an idle task, inside `gsap.context()`, and are reverted on unmount.
+- `[data-reveal]` elements animate in through an IntersectionObserver (`RevealRoot`). Nothing on screen at load is ever hidden.
 - Lenis is driven by the GSAP ticker; `ScrollTrigger.refresh()` runs on each route change; back/forward keeps native scroll restoration.
 - Nothing above the fold waits for JavaScript: the hero headline and copy animate with CSS, and the reveal system never hides elements already in view (protects LCP).
 - Only `transform` / `opacity` / `clip-path` are animated.

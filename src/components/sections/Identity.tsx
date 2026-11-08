@@ -1,38 +1,15 @@
-"use client";
-import { useRef } from "react";
+import { Fx } from "@/components/animation/Fx";
 import { profile } from "@/content/profile";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { useGsap } from "@/hooks/useGsap";
-import { gsap } from "@/lib/gsap";
 
 /** "From architecture to production" — a pipeline whose connecting rail is drawn by scroll. */
 export function Identity() {
-  const root = useRef<HTMLElement>(null);
   const { identity } = profile;
 
-  useGsap(root, () => {
-    const mm = gsap.matchMedia();
-    mm.add("(min-width: 1024px)", () => {
-      gsap.fromTo("[data-rail]", { scaleX: 0 }, {
-        scaleX: 1, ease: "none",
-        scrollTrigger: { trigger: "[data-pipeline]", start: "top 75%", end: "bottom 45%", scrub: true },
-      });
-      gsap.from("[data-step]", {
-        y: 40, opacity: 0, stagger: 0.12, ease: "power3.out",
-        scrollTrigger: { trigger: "[data-pipeline]", start: "top 75%", end: "bottom 50%", scrub: 0.8 },
-      });
-    });
-    mm.add("(max-width: 1023px)", () => {
-      gsap.fromTo("[data-rail-v]", { scaleY: 0 }, {
-        scaleY: 1, ease: "none",
-        scrollTrigger: { trigger: "[data-pipeline]", start: "top 70%", end: "bottom 60%", scrub: true },
-      });
-    });
-    return () => mm.revert();
-  });
 
   return (
-    <section ref={root} aria-labelledby="identity-title" className="relative border-t hairline bg-surface py-24 md:py-36">
+    <section aria-labelledby="identity-title" className="relative border-t hairline bg-surface py-24 md:py-36">
+      <Fx name="identity" />
       <div className="container-x">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-7">

@@ -6,28 +6,49 @@ Date: 2026-11-08 · Build: Next.js 15.5 static export (22 HTML pages incl. 9 cas
 | Check | Result |
 |---|---|
 | `next build` (static export) | ✅ 22/22 pages |
+| Reduced motion (Playwright `reducedMotion: reduce`) | ✅ no WebGL/Lenis, nothing hidden, hero 1 viewport tall |
 | ESLint (next/core-web-vitals + typescript) | ✅ 0 problems |
 | `tsc --noEmit` (strict) | ✅ |
 | Vitest content-integrity (8 tests) | ✅ |
 | Playwright route sweep — 17 routes × 8 widths (320, 375, 390, 430, 768, 1024, 1440, 1920) | ✅ no console errors, no failed/4xx requests, no horizontal overflow, exactly one `<h1>` per page |
 
 ## Lighthouse 12 (mobile, devtools throttling: 4× CPU, slow 4G)
-Measured against the local static server (`python3 -m http.server`), which sends **no compression and no cache headers** — Hostinger with the bundled `.htaccess` will do better on transfer.
+
+Measured against `scripts/serve-prod.cjs`, a local server that mirrors the bundled
+`.htaccess` (gzip, immutable caching for hashed assets). Three runs per page agreed within ±1.
 
 ```
-/ perf:79 acce:100 best:100 seo:100 | LCP 2.3 s CLS 0 TBT 610 ms   (after deferring 3D)
-/work/menuwave/ perf:92 acce:100 best:100 seo:100 | LCP 2.2 s CLS 0 TBT 240 ms
-/work/unisecure/ perf:94 acce:100 best:100 seo:100 | LCP 2.2 s CLS 0 TBT 160 ms
-/work/ perf:94 acce:100 best:100 seo:100 | LCP 2.2 s CLS 0 TBT 160 ms
-/resume/ perf:96 acce:100 best:100 seo:100 | LCP 2.2 s CLS 0 TBT 120 ms
-/contact/ perf:94 acce:100 best:100 seo:100 | LCP 2.2 s CLS 0 TBT 180 ms
+/                  perf:98 acce:100 best:100 seo:100 | LCP 1.7 s CLS 0 TBT 120 ms
+/about/            perf:99 acce:100 best:100 seo:100 | LCP 1.6 s CLS 0 TBT 90 ms
+/work/             perf:98 acce:100 best:100 seo:100 | LCP 1.6 s CLS 0 TBT 130 ms
+/work/menuwave/    perf:99 acce:100 best:100 seo:100 | LCP 1.6 s CLS 0 TBT 80 ms
+/work/unisecure/   perf:98 acce:100 best:100 seo:100 | LCP 1.6 s CLS 0 TBT 110 ms
+/experience/       perf:98 acce:98 best:100 seo:100 | LCP 1.6 s CLS 0 TBT 140 ms
+/expertise/        perf:99 acce:98 best:100 seo:100 | LCP 1.6 s CLS 0 TBT 90 ms
+/lab/              perf:99 acce:100 best:100 seo:100 | LCP 1.6 s CLS 0 TBT 90 ms
+/resume/           perf:99 acce:100 best:100 seo:100 | LCP 1.6 s CLS 0 TBT 80 ms
+/contact/          perf:98 acce:100 best:100 seo:100 | LCP 1.6 s CLS 0 TBT 120 ms
 ```
 
-- **Accessibility 100, Best Practices 100, SEO 100** on every page measured.
-- **CLS 0** everywhere. **LCP 2.2–2.4 s** (= first contentful paint; nothing above the fold waits for JS).
-- **Inner pages: Performance 92–96.**
-- **Homepage: Performance 79** — below the 90 target. Remaining cost is React hydration of the long, interactive homepage (~670 ms scripting on 4× throttled CPU), not WebGL (deferred until interaction). Next steps if needed: convert Stats/Identity/Timeline/Contact to server components with small client "animator" islands, and split below-the-fold sections with `next/dynamic`.
-- Lighthouse's *simulated* throttling reports a higher LCP (≈4–6 s) because its model attributes all JS to the paint; the devtools-throttled measurements above are observed values.
+- **Performance 98–99, Accessibility 100, Best Practices 100, SEO 100 on every page.**
+- **LCP 1.6–1.7 s, CLS 0, TBT 80–140 ms.**
+- Without compression (plain `python3 -m http.server`) the homepage still scores 93–94 (LCP 2.1 s).
+
+### What fixed the homepage (79 → 98)
+1. **Lazy scroll effects.** Section choreography moved out of client components into one
+   `<Fx name="…" />` island per section. Its ScrollTriggers are created only when the section
+   nears the viewport, each in its own idle task. Previously all of them measured the page
+   inside a single 444 ms post-hydration task.
+2. **Reveal system on IntersectionObserver.** No layout reads, no ScrollTriggers; this removed
+   ~200 ms of forced reflow.
+3. **Server components.** Hero, Identity, Stats, Selected Work, Expertise, Timeline and Contact
+   now render on the server, so there is less to hydrate.
+4. **No first-load layout pass.** Lenis starts in an idle task, and the route-change
+   `ScrollTrigger.refresh()` runs only on client-side navigation.
+5. **Fonts.** Geist and Geist Mono are subset to Latin and weights 400–600
+   (69 kB → 17 kB and 71 kB → 13.5 kB, `scripts/subset-fonts.sh`). The italic serif is no
+   longer preloaded. LCP now equals first paint.
+6. **No animation delay on the first hero text.**
 
 ## Manual / visual checks
 - Hero: CSS-only headline entrance; SVG stack shown immediately; WebGL fades in after first interaction; scroll separates layers and swings the camera; legend reveals. Verified at 1440×900 and 390×844 (lite tier).

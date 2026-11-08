@@ -37,6 +37,9 @@ body {
 }
 html { overflow-x: clip;
 }
+/* Two next/font families can't share a name, so italic display text points at the italic face */
+.font-display.italic, .t-hero .italic, .t-display .italic, .t-title .italic, h1 .italic { font-family: var(--font-display-italic), var(--font-display), serif; font-style: italic; }
+
 ::selection { background: var(--accent-soft); color: var(--ink); }
 
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
@@ -64,17 +67,17 @@ html { overflow-x: clip;
 .mask > * { display: block; }
 
 /* Hero headline: CSS-only masked rise so it paints before JS hydrates */
-@keyframes hero-rise { from { transform: translateY(105%); } to { transform: none; } }
+@keyframes hero-rise { from { transform: translateY(55%); } to { transform: none; } }
 .hero-line { animation: hero-rise 1.1s cubic-bezier(.16,1,.3,1) both; }
 @keyframes hero-fade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 .hero-fade { animation: hero-fade .9s cubic-bezier(.16,1,.3,1) both; }
 
 /* Hidden-before-reveal state only applies when JS + motion are available */
-.js-motion [data-reveal]:not([data-revealed]) { opacity: 0; transform: translateY(28px); }
+[data-reveal][data-pending] { opacity: 0; transform: translateY(28px); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
-  .js-motion [data-reveal] { opacity: 1; transform: none; }
+  [data-reveal][data-pending] { opacity: 1; transform: none; }
 }
 
 .skip-link { position: absolute; left: 1rem; top: -100px; z-index: 100; background: var(--ink); color: var(--paper); padding: .6rem 1rem; border-radius: 8px; }

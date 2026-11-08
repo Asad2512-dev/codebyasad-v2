@@ -1,30 +1,16 @@
-"use client";
+import { Fx } from "@/components/animation/Fx";
 import Link from "next/link";
-import { useRef } from "react";
 import { stats } from "@/content/achievements";
 import { Status } from "@/components/ui/Status";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { useGsap } from "@/hooks/useGsap";
-import { gsap } from "@/lib/gsap";
 
 export function Stats() {
-  const root = useRef<HTMLElement>(null);
   const shown = stats.filter((s) => s.status !== "pending");
 
-  useGsap(root, () => {
-    gsap.utils.toArray<HTMLElement>("[data-count]").forEach((el) => {
-      const end = Number(el.dataset.count);
-      const obj = { v: 0 };
-      gsap.to(obj, {
-        v: end, duration: 1.6, ease: "power2.out",
-        scrollTrigger: { trigger: el, start: "top 85%", once: true },
-        onUpdate: () => { el.textContent = String(Math.round(obj.v)); },
-      });
-    });
-  });
 
   return (
-    <section ref={root} aria-labelledby="stats-title" className="border-t hairline py-24 md:py-32">
+    <section aria-labelledby="stats-title" className="border-t hairline py-24 md:py-32">
+      <Fx name="stats" />
       <div className="container-x">
         <SectionHeader index="03" label="Proof in numbers" title="Shipped, not sketched." />
         <h3 id="stats-title" className="sr-only">Career statistics</h3>

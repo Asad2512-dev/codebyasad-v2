@@ -1,39 +1,17 @@
-"use client";
+import { Fx } from "@/components/animation/Fx";
 import Link from "next/link";
-import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { featuredProjects } from "@/content/projects";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ModuleMap } from "@/components/projects/ModuleMap";
 import { Button } from "@/components/ui/Button";
-import { useGsap } from "@/hooks/useGsap";
-import { gsap } from "@/lib/gsap";
 
 export function SelectedWork() {
-  const root = useRef<HTMLElement>(null);
 
-  useGsap(root, () => {
-    gsap.utils.toArray<HTMLElement>("[data-stage]").forEach((stage) => {
-      const visual = stage.querySelector("[data-visual]");
-      const base = stage.querySelector("[data-layer='base']");
-      const float = stage.querySelector("[data-layer='float']");
-      const index = stage.querySelector("[data-index]");
-      // Perspective panel settles flat as the stage scrolls into place
-      if (base) gsap.fromTo(base, { rotateX: 14, rotateY: -10, y: 60 }, {
-        rotateX: 0, rotateY: 0, y: 0, ease: "none",
-        scrollTrigger: { trigger: stage, start: "top bottom", end: "center center", scrub: 0.8 },
-      });
-      if (float) gsap.fromTo(float, { y: 80 }, { y: -30, ease: "none", scrollTrigger: { trigger: stage, start: "top bottom", end: "bottom top", scrub: true } });
-      if (index) gsap.fromTo(index, { yPercent: 30 }, { yPercent: -30, ease: "none", scrollTrigger: { trigger: stage, start: "top bottom", end: "bottom top", scrub: true } });
-      if (visual) gsap.fromTo(visual, { clipPath: "inset(12% 8% 12% 8% round 24px)" }, {
-        clipPath: "inset(0% 0% 0% 0% round 0px)", ease: "none",
-        scrollTrigger: { trigger: stage, start: "top 90%", end: "top 30%", scrub: true },
-      });
-    });
-  });
 
   return (
-    <section ref={root} id="work" aria-labelledby="work-title" className="border-t hairline bg-surface py-24 md:py-36">
+    <section id="work" aria-labelledby="work-title" className="border-t hairline bg-surface py-24 md:py-36">
+      <Fx name="work" />
       <div className="container-x">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <SectionHeader index="04" label="Selected work" title="Products in production." lead="Three flagship platforms — the problem, the system and my role in each." />

@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "@/styles/globals.css";
-import { display, GeistSans, GeistMono } from "@/lib/fonts";
+import { display, displayItalic, GeistSans, GeistMono } from "@/lib/fonts";
 import { themeCssVariables, colors } from "@/config/theme";
 import { site } from "@/config/site";
 import { profile } from "@/content/profile";
@@ -37,7 +37,7 @@ const personLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" className={`${display.variable} ${displayItalic.variable} ${GeistSans.variable} ${GeistMono.variable}`}>
       <head>
         <style dangerouslySetInnerHTML={{ __html: themeCssVariables() }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }} />

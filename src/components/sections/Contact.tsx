@@ -1,25 +1,15 @@
-"use client";
-import { useRef } from "react";
+import { Fx } from "@/components/animation/Fx";
 import { ArrowUpRight, Mail } from "lucide-react";
 import { profile } from "@/content/profile";
-import { useGsap } from "@/hooks/useGsap";
-import { gsap } from "@/lib/gsap";
 import { Button } from "@/components/ui/Button";
 
 export function Contact({ as: Tag = "h2" }: { as?: "h1" | "h2" }) {
-  const root = useRef<HTMLElement>(null);
   const words = profile.contact.headline.split(" ");
 
-  useGsap(root, () => {
-    gsap.from("[data-word]", {
-      yPercent: 110, duration: 1.2, stagger: 0.06, ease: "expo.out",
-      scrollTrigger: { trigger: root.current, start: "top 70%" },
-    });
-    gsap.fromTo("[data-orbit]", { rotate: 0 }, { rotate: 90, ease: "none", scrollTrigger: { trigger: root.current, start: "top bottom", end: "bottom top", scrub: true } });
-  });
 
   return (
-    <section ref={root} id="contact" aria-labelledby="contact-title" className="relative overflow-hidden border-t hairline bg-surface py-28 md:py-44">
+    <section id="contact" aria-labelledby="contact-title" className="relative overflow-hidden border-t hairline bg-surface py-28 md:py-44">
+      <Fx name="contact" />
       <svg data-orbit aria-hidden viewBox="0 0 600 600" className="pointer-events-none absolute -right-40 -bottom-40 w-[620px] text-line md:-right-24">
         {[290, 230, 170, 110].map((r) => <circle key={r} cx="300" cy="300" r={r} fill="none" stroke="currentColor" />)}
         <circle cx="530" cy="190" r="7" fill="var(--accent)" />

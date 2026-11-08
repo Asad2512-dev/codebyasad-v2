@@ -1,41 +1,50 @@
 "use client";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
-import { duration, ease, stagger } from "@/config/motion";
+import { gsap, prefersReducedMotion } from "@/lib/gsap";
+import { duration, ease } from "@/config/motion";
 
 /**
- * Global reveal system: any element with [data-reveal] fades/rises in when it
- * enters the viewport. Content is visible by default (no JS / reduced motion);
- * the hidden state is only applied once this component has taken control.
+ * Global reveal system for [data-reveal] elements, built on IntersectionObserver
+ * (no layout reads, no ScrollTriggers). Content is visible by default; only
+ * elements the observer reports as off-screen are marked [data-pending] (hidden
+ * by CSS) and then animate in when they arrive. Nothing already seen is hidden.
  */
 export function RevealRoot() {
   const pathname = usePathname();
   useEffect(() => {
-    const root = document.documentElement;
-    if (prefersReducedMotion()) {
-      root.classList.remove("js-motion");
-      return;
-    }
-    // Anything already on screen stays visible — never hide content the visitor
-    // (or LCP) has already seen. Only below-the-fold elements get the reveal.
-    const vh = window.innerHeight;
-    const all = gsap.utils.toArray<HTMLElement>("[data-reveal]");
-    all.forEach((el) => { if (el.getBoundingClientRect().top < vh) el.setAttribute("data-revealed", ""); });
-    root.classList.add("js-motion");
-    const els = all.filter((el) => !el.hasAttribute("data-revealed"));
-    const triggers = ScrollTrigger.batch(els, {
-      start: "top 88%",
-      once: true,
-      onEnter: (batch) =>
-        gsap.to(batch, { opacity: 1, y: 0, duration: duration.base, ease: ease.out, stagger: stagger.base, overwrite: true }),
-    });
-    // Anything already above the fold or skipped by back/forward navigation
-    ScrollTrigger.refresh();
+    if (prefersReducedMotion()) return;
+    const els = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+    const seen = new WeakSet<Element>();
+    let queue: HTMLElement[] = [];
+    let raf = 0;
+    const flush = () => {
+      raf = 0;
+      const batch = queue; queue = [];
+      batch.forEach((el) => el.removeAttribute("data-pending"));
+      gsap.fromTo(batch, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: duration.base, ease: ease.out, stagger: 0.08, clearProps: "opacity,transform" });
+    };
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        const el = e.target as HTMLElement;
+        if (!seen.has(el)) {
+          seen.add(el);
+          if (e.isIntersecting) { io.unobserve(el); continue; } // already visible: leave it alone
+          el.setAttribute("data-pending", "");
+          continue;
+        }
+        if (e.isIntersecting) {
+          io.unobserve(el);
+          queue.push(el);
+          if (!raf) raf = requestAnimationFrame(flush);
+        }
+      }
+    }, { rootMargin: "0px 0px -10% 0px" });
+    els.forEach((el) => io.observe(el));
     return () => {
-      triggers.forEach((t) => t.kill());
-      gsap.set(els, { clearProps: "opacity,transform" });
-      all.forEach((el) => el.removeAttribute("data-revealed"));
+      io.disconnect();
+      cancelAnimationFrame(raf);
+      els.forEach((el) => el.removeAttribute("data-pending"));
     };
   }, [pathname]);
   return null;
