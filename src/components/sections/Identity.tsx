@@ -1,0 +1,62 @@
+"use client";
+import { useRef } from "react";
+import { profile } from "@/content/profile";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { useGsap } from "@/hooks/useGsap";
+import { gsap } from "@/lib/gsap";
+
+/** "From architecture to production" — a pipeline whose connecting rail is drawn by scroll. */
+export function Identity() {
+  const root = useRef<HTMLElement>(null);
+  const { identity } = profile;
+
+  useGsap(root, () => {
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 1024px)", () => {
+      gsap.fromTo("[data-rail]", { scaleX: 0 }, {
+        scaleX: 1, ease: "none",
+        scrollTrigger: { trigger: "[data-pipeline]", start: "top 75%", end: "bottom 45%", scrub: true },
+      });
+      gsap.from("[data-step]", {
+        y: 40, opacity: 0, stagger: 0.12, ease: "power3.out",
+        scrollTrigger: { trigger: "[data-pipeline]", start: "top 75%", end: "bottom 50%", scrub: 0.8 },
+      });
+    });
+    mm.add("(max-width: 1023px)", () => {
+      gsap.fromTo("[data-rail-v]", { scaleY: 0 }, {
+        scaleY: 1, ease: "none",
+        scrollTrigger: { trigger: "[data-pipeline]", start: "top 70%", end: "bottom 60%", scrub: true },
+      });
+    });
+    return () => mm.revert();
+  });
+
+  return (
+    <section ref={root} aria-labelledby="identity-title" className="relative border-t hairline bg-surface py-24 md:py-36">
+      <div className="container-x">
+        <div className="grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <SectionHeader index="02" label="Engineering identity" title={identity.headline} />
+          </div>
+          <p className="t-lead self-end lg:col-span-5" data-reveal>{identity.intro}</p>
+        </div>
+        <h3 id="identity-title" className="sr-only">Delivery pipeline</h3>
+
+        <ol data-pipeline className="relative mt-20 grid gap-0 lg:mt-28 lg:grid-cols-8 lg:gap-4">
+          <span data-rail aria-hidden className="absolute top-[9px] right-0 left-0 hidden h-px origin-left bg-accent lg:block" />
+          <span data-rail-v aria-hidden className="absolute top-2 bottom-2 left-[9px] w-px origin-top bg-accent lg:hidden" />
+          {identity.pipeline.map((s, i) => (
+            <li key={s.step} data-step className="relative pb-10 pl-10 lg:pb-0 lg:pl-0">
+              <span aria-hidden className="absolute top-0 left-0 grid size-[19px] place-items-center rounded-full border border-accent bg-surface lg:relative">
+                <span className="size-[7px] rounded-full bg-accent" />
+              </span>
+              <p className="font-mono text-[11px] text-accent lg:mt-6">0{i + 1}</p>
+              <h4 className="mt-1 text-lg font-medium">{s.step}</h4>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{s.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
