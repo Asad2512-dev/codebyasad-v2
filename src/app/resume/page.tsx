@@ -15,8 +15,8 @@ export default function ResumePage() {
   // Only offer a PDF download if the file has actually been added.
   const hasPdf = fs.existsSync(path.join(process.cwd(), "public", site.resumePdf));
   const work = experience.filter((r) => r.kind === "work");
-  const unisecure = getProject("unisecure");
-  const projects = unisecure ? [...featuredProjects, unisecure] : featuredProjects;
+  const extra = ["labelbuddy", "biterush", "unisecure"].map(getProject).filter((x) => x !== undefined);
+  const projects = [...featuredProjects, ...extra];
 
   return (
     <div className="pt-28 pb-24 md:pt-36 print:pt-0 print:pb-0">
@@ -66,7 +66,7 @@ export default function ResumePage() {
             <h2 id="r-proj" className="t-label mb-5">Selected projects</h2>
             <ul className="space-y-3 text-sm">
               {projects.map((p) => (
-                <li key={p.slug} className="break-inside-avoid"><span className="font-medium">{p.name}</span> — <span className="text-muted">{p.tagline}{p.technologies.items.length ? ` (${p.technologies.items.slice(0, 5).join(", ")})` : ""}</span></li>
+                <li key={p.slug} className="break-inside-avoid"><span className="font-medium">{p.name}</span> — <span className="text-muted">{p.tagline}{p.technologies.length ? ` (${p.technologies.slice(0, 5).join(", ")})` : ""}</span></li>
               ))}
             </ul>
           </section>

@@ -12,9 +12,9 @@ export function ModuleMap({ project, className }: { project: Project; className?
     // eslint-disable-next-line @next/next/no-img-element
     return <img src={shot.src} alt={shot.alt} className={cn("w-full rounded-[var(--radius-lg)] border hairline shadow-lift", className)} loading="lazy" />;
   }
-  const mods = project.modules.slice(0, 6);
+  const mods = (project.modules ?? []).slice(0, 6);
   return (
-    <figure className={cn("relative", className)} aria-label={`Module map of ${project.name}: ${project.modules.join(", ")}`}>
+    <figure className={cn("relative", className)} aria-label={`Module map of ${project.name}: ${(project.modules ?? []).join(", ")}`}>
       <div data-layer="base" className="relative overflow-hidden rounded-[var(--radius-lg)] border hairline bg-surface shadow-lift">
         <div className="flex items-center gap-1.5 border-b hairline px-4 py-3">
           <span className="size-2.5 rounded-full bg-line" /><span className="size-2.5 rounded-full bg-line" /><span className="size-2.5 rounded-full bg-line" />
@@ -38,7 +38,7 @@ export function ModuleMap({ project, className }: { project: Project; className?
       </div>
       <div data-layer="float" className="absolute right-3 -bottom-6 hidden rounded-[var(--radius-md)] border hairline bg-surface p-3 shadow-lift sm:block xl:-right-8">
         <p className="font-mono text-[10px] tracking-wider text-muted uppercase">Modules</p>
-        <p className="font-display text-3xl">{project.modules.length}</p>
+        <p className="font-display text-3xl">{project.modules?.length ?? 0}</p>
       </div>
       <figcaption className="mt-8 font-mono text-[10px] tracking-wider text-muted uppercase">Illustrative module map — not a product screenshot</figcaption>
     </figure>

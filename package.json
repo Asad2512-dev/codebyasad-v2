@@ -10,7 +10,8 @@
     "test": "vitest run",
     "qa": "NODE_PATH=$(npm root -g) node scripts/qa.cjs",
     "og": "NODE_PATH=$(npm root -g) node scripts/og.mjs",
-    "preview": "cd out && python3 -m http.server 4173"
+    "preview": "PORT=4173 node scripts/serve-prod.cjs",
+    "docs:inventory": "npx -y tsx scripts/gen-docs.ts"
   },
   "dependencies": {
     "@fontsource/instrument-serif": "^5.3.0",
