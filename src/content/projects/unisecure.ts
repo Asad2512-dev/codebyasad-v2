@@ -9,7 +9,7 @@ export const unisecure: Project = {
   summary:
     "A Laravel 13 platform with a web admin panel and one Flutter app for students, teachers and guards — attendance, scheduling, gate activity, visitors, notifications and audit trails over a versioned API.",
   tier: "featured",
-  published: true,
+  published: false,
   status: "In Development",
   origin: "original",
   highlight: "A versioned /api/v1 with one response envelope and request-ID tracing, plus a provider-independent face-verification interface (provider integration planned).",

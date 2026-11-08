@@ -18,7 +18,10 @@ export const totalcashpro: Project = {
   highlight: "Eight role-scoped route groups (super-admin, business-admin, staff, rider, kiosk, security, API v1) over one domain model, guarded by 35 authorization policies.",
   repos: ["totalcashpro-private-1"],
   links: { live: "https://totalcashpro.com" },
-  screenshots: [],
+  screenshots: [{
+    src: "/images/projects/totalcashpro/totalcashpro-homepage.webp",
+    alt: "TotalCashPro homepage showing its restaurant operations dashboard for cash, staffing, attendance and weekly reports",
+  }],
   stats: [
     { value: "147", label: "Eloquent models" },
     { value: "23", label: "Service areas" },
@@ -80,6 +83,6 @@ export const totalcashpro: Project = {
   outcomes: [{ text: "Live product at totalcashpro.com", status: "verified" }],
   lessons: [],
   related: ["menuwave", "buildexa"],
-  pending: ["Screenshots", "Measured production outcomes", "Exact individual vs. team ownership split"],
+  pending: ["Operational product screenshots", "Measured production outcomes", "Exact individual vs. team ownership split"],
   evidence: evidence([...repoEvidence(["totalcashpro-private-1"]), { label: "totalcashpro.com", href: "https://totalcashpro.com", kind: "live-site" }, profileSource], "verified", "full"),
 };

@@ -3,7 +3,7 @@
 _Generated from `src/content/repository-map.ts` by `npm run docs:inventory`._
 
 **Scope:** all 95 repositories visible for github.com/Asad2512-dev on 2026-11-08
-(24 public, 71 private).
+(25 public, 70 private).
 
 **Method:** private repositories were attached to the build session read-only and read through the GitHub REST API
 (metadata, `docs/ARCHITECTURE.md`, README, root manifests, full file tree, Android/iOS app labels); public repositories
@@ -17,22 +17,22 @@ No credentials were printed or committed. Private repositories appear under neut
 | — substantive | 91 |
 | — stub (README-only repo) | 3 |
 | — empty repository | 1 |
-| Repositories mapped to projects | 75 |
-| Distinct projects with repositories | 49 |
+| Repositories mapped to projects | 77 |
+| Distinct projects with repositories | 51 |
 | Learning / practice | 7 |
 | Assessment tasks | 2 |
 | Forks | 2 |
 | Third-party / not original | 2 |
-| Unpublished pending confirmation | 6 |
+| Unpublished pending confirmation | 4 |
 | Profile | 1 |
 
 ## Reconciliation (target: 41 projects)
 
-- **49 distinct projects** are backed by repositories after grouping multi-repo products
+- **51 distinct projects** are backed by repositories after grouping multi-repo products
   (MenuWave ×4, BiteRush ×5, CoreSY ×6, Tangled Synapses ×6, LabelBuddy ×2, BuildExa ×2, WeCare ×2, GreenGuide ×2, Flames & Shakes ×2, GoBirr ×2, Mood Panda ×2, Askio AI ×2, CodeByAsad ×2).
 - **6 more** are listed in the profile README without a repository (EVM, Supervisor Allocation, Pak Enterprises Tiles, Dr. Farhan Siddique, RCR-DeepFake, FreqKAN).
 - **ExamCell** (flagship) maps to a private repository whose default branch is empty — the case study uses profile content only.
-- **Total published: 52.** Nothing in the evidence justifies removing exactly 11; to reach 41, set `published: false` on entries in `src/content/projects/catalog.ts` (candidates are listed in CONTENT-GAPS.md).
+- **Total published: 42.** Twelve entries are hidden from the published portfolio at the owner’s request; their repository evidence remains in this audit for traceability. Session Buddy was added as a catalogue entry from its public repository and supplied thumbnail.
 - **Provenance flags:** BiteRush (6amMart base) and GoBirr (eDemand rebrand) are labelled “customised”; two private repositories (an adapted copy of an open-source project and a third-party commercial codebase) are excluded as not original work.
 - Profile apps without repositories: Smart Cubz, Urdu Poetry, Campus Ride — not published (no description to show).
 
@@ -107,7 +107,7 @@ No credentials were printed or committed. Private repositories appear under neut
 | 🔒 mood-panda-private-1 | main | substantive | Flutter, Firebase, Cloud Firestore, FCM | mood-panda | project |
 | [my-flyn](https://github.com/Asad2512-dev/my-flyn) | main | substantive | Flutter, GetX | — | assessment — Assignment app (README says it follows assignment instructions) |
 | 🔒 askio-ai-private-2 | main | substantive | Flutter, GetX | askio-ai | project |
-| 🔒 unlisted-private-4 | main | substantive | Flutter, GetX, Dio | — | unpublished — Odyssey Hub — no description or feature modules; confirm |
+| [odyssy_hub](https://github.com/Asad2512-dev/odyssy_hub) | main | substantive | Flutter, GetX, Dio | odyssey-hub | project |
 | 🔒 online-barber-private-1 | master | substantive | Flutter, Firebase, Cloud Firestore, Firebase Auth, FCM, GetX, Google Maps | online-barber | project |
 | 🔒 unlisted-private-5 | main | substantive | Flutter, Firebase, Cloud Firestore, Firebase Auth, GetX | — | unpublished — PingCoin — limited evidence of scope; confirm |
 | 🔒 prepx-private-1 | main | substantive | Laravel, PHP, Tailwind CSS, Vite | prepx | project |
@@ -115,7 +115,7 @@ No credentials were printed or committed. Private repositories appear under neut
 | 🔒 rayvon-scents-private-1 | main | substantive | Laravel, PHP, Tailwind CSS, Alpine.js, Vite, Pusher | rayvon-scents | project |
 | 🔒 read-holy-quran-private-1 | main | substantive | Laravel, PHP, Livewire, Tailwind CSS, Vite | read-holy-quran | project |
 | 🔒 safe-city-private-1 | main | substantive | Flutter, Firebase, Cloud Firestore, Firebase Auth, FCM, GetX, Google Maps | safe-city | project |
-| [session_buddy](https://github.com/Asad2512-dev/session_buddy) | main | substantive | Flutter, Firebase, Cloud Firestore, Firebase Auth, GetX | — | unpublished — Session Buddy — no description; confirm |
+| [session_buddy](https://github.com/Asad2512-dev/session_buddy) | main | substantive | Flutter, Firebase, Cloud Firestore, Firebase Auth, GetX | session-buddy | project |
 | 🔒 signlink-private-1 | main | substantive | — | signlink | project |
 | [smart-log-analyzer](https://github.com/Asad2512-dev/smart-log-analyzer) | main | substantive | TypeScript | smart-log-analyzer | project |
 | 🔒 budget-mart-private-1 | main | substantive | Flutter, Firebase, Cloud Firestore, Firebase Auth, FCM, GetX, Google Maps | budget-mart | project |

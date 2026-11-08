@@ -16,7 +16,7 @@ export const stats: Stat[] = [
 /** Public web properties from the inventory — rendered on /work as an index. */
 export const webProperties = [
   { name: "Total Cash Pro", focus: "Hospitality back-office", href: "https://totalcashpro.com" },
-  { name: "MenuWave", focus: "Restaurant operations platform", href: "https://menuwave.com" },
+  { name: "MenuWave", focus: "Restaurant operations platform", href: "https://www.menuwav.com/" },
   { name: "LabelBuddy", focus: "Shopify / EU energy labels", href: "https://labelbuddy.co.uk" },
   { name: "Zawaaral 3PL", focus: "Logistics and fulfilment", href: "https://zawaaral.com" },
   { name: "Pak Enterprises Tiles", focus: "Catalogue and tile calculator", href: "https://pakenterprisestiles.com" },
