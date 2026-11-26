@@ -6,7 +6,7 @@ export const experience: Role[] = [
     id: "buildexa",
     title: "Senior Full-Stack Engineer & Senior Product Designer",
     org: "Buildexa Technologies",
-    location: "Pakistan",
+    location: "United Kingdom",
     workMode: "Remote",
     start: "2026-08",
     end: "present",
